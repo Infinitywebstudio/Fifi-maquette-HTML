@@ -1091,15 +1091,11 @@ body {
 }
 
 /* Gap controls */
-.gap-header {
+.gap-controls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.gap-header label {
-    margin: 0;
+    gap: 6px;
+    flex: 1;
 }
 
 .link-btn {
@@ -1115,6 +1111,7 @@ body {
     justify-content: center;
     transition: all 0.2s;
     padding: 0;
+    flex-shrink: 0;
 }
 
 .link-btn:hover {
@@ -1131,25 +1128,29 @@ body {
 .gap-inputs {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 6px;
+    flex: 1;
 }
 
 .gap-field {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     flex: 1;
+    min-width: 0;
 }
 
 .gap-label {
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-secondary);
-    min-width: 35px;
+    min-width: 24px;
     text-transform: capitalize;
+    flex-shrink: 0;
 }
 
 .gap-field .input-group {
     flex: 1;
+    min-width: 0;
 }
 
 .width-controls,
