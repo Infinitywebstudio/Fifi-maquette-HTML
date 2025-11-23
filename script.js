@@ -897,18 +897,56 @@ function initializeContainerStyleControls() {
         });
     });
 
-    const flexWrap = document.getElementById('flexWrap');
-    const flexGap = document.getElementById('flexGap');
-    const flexGapUnit = document.getElementById('flexGapUnit');
+    // Wrap buttons
+    const wrapButtons = document.querySelectorAll('[data-wrap]');
+    wrapButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            wrapButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
 
-    flexWrap.addEventListener('change', () => {
-        if (appState.selectedElement) {
+    // Gap controls with link button
+    const flexColumnGap = document.getElementById('flexColumnGap');
+    const flexColumnGapUnit = document.getElementById('flexColumnGapUnit');
+    const flexRowGap = document.getElementById('flexRowGap');
+    const flexRowGapUnit = document.getElementById('flexRowGapUnit');
+    const gapLinkBtn = document.getElementById('gapLinkBtn');
+    let gapLinked = true;
+    gapLinkBtn.classList.add('active');
+
+    gapLinkBtn.addEventListener('click', () => {
+        gapLinked = !gapLinked;
+        gapLinkBtn.classList.toggle('active', gapLinked);
+        if (gapLinked && appState.selectedElement) {
+            // Sync row to column when linking
+            flexRowGap.value = flexColumnGap.value;
+            flexRowGapUnit.value = flexColumnGapUnit.value;
             applyFlexStyles();
         }
     });
 
-    [flexGap, flexGapUnit].forEach(input => {
-        input.addEventListener('change', () => {
+    [flexColumnGap, flexColumnGapUnit].forEach(input => {
+        input.addEventListener('input', () => {
+            if (gapLinked) {
+                flexRowGap.value = flexColumnGap.value;
+                flexRowGapUnit.value = flexColumnGapUnit.value;
+            }
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
+
+    [flexRowGap, flexRowGapUnit].forEach(input => {
+        input.addEventListener('input', () => {
+            if (gapLinked) {
+                flexColumnGap.value = flexRowGap.value;
+                flexColumnGapUnit.value = flexRowGapUnit.value;
+            }
             if (appState.selectedElement) {
                 applyFlexStyles();
             }
@@ -1010,15 +1048,22 @@ function applyFlexStyles() {
     const activeAlignBtn = document.querySelector('[data-align].active');
     const flexAlign = activeAlignBtn ? activeAlignBtn.dataset.align : 'flex-start';
 
-    const flexWrap = document.getElementById('flexWrap').value;
-    const flexGap = document.getElementById('flexGap').value;
-    const flexGapUnit = document.getElementById('flexGapUnit').value.toLowerCase();
+    // Get wrap from active button
+    const activeWrapBtn = document.querySelector('[data-wrap].active');
+    const flexWrap = activeWrapBtn ? activeWrapBtn.dataset.wrap : 'nowrap';
+
+    // Get gap values
+    const flexColumnGap = document.getElementById('flexColumnGap').value;
+    const flexColumnGapUnit = document.getElementById('flexColumnGapUnit').value.toLowerCase();
+    const flexRowGap = document.getElementById('flexRowGap').value;
+    const flexRowGapUnit = document.getElementById('flexRowGapUnit').value.toLowerCase();
 
     appState.selectedElement.style.flexDirection = flexDirection;
     appState.selectedElement.style.justifyContent = flexJustify;
     appState.selectedElement.style.alignItems = flexAlign;
     appState.selectedElement.style.flexWrap = flexWrap;
-    appState.selectedElement.style.gap = flexGap + flexGapUnit;
+    appState.selectedElement.style.columnGap = flexColumnGap + flexColumnGapUnit;
+    appState.selectedElement.style.rowGap = flexRowGap + flexRowGapUnit;
 }
 
 function applyGridStyles() {

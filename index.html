@@ -549,23 +549,47 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="control-group">
+                        <div class="control-group-inline">
                             <label>Wrap</label>
-                            <select class="page-option-select" id="flexWrap">
-                                <option value="nowrap">No Wrap</option>
-                                <option value="wrap">Wrap</option>
-                                <option value="wrap-reverse">Wrap Reverse</option>
-                            </select>
+                            <div class="option-button-group">
+                                <button class="option-btn active" data-wrap="nowrap">No Wrap</button>
+                                <button class="option-btn" data-wrap="wrap">Wrap</button>
+                                <button class="option-btn" data-wrap="wrap-reverse">Reverse</button>
+                            </div>
                         </div>
                         <div class="control-group">
-                            <label>Gap</label>
-                            <div class="input-group">
-                                <input type="number" value="0" class="property-input" id="flexGap">
-                                <select class="unit-select" id="flexGapUnit">
-                                    <option>PX</option>
-                                    <option>%</option>
-                                    <option>REM</option>
-                                </select>
+                            <div class="gap-header">
+                                <label>Gap</label>
+                                <button class="link-btn" id="gapLinkBtn" title="Link column and row gap">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="gap-inputs">
+                                <div class="gap-field">
+                                    <span class="gap-label">Column</span>
+                                    <div class="input-group">
+                                        <input type="number" value="0" class="property-input" id="flexColumnGap">
+                                        <select class="unit-select" id="flexColumnGapUnit">
+                                            <option>PX</option>
+                                            <option>%</option>
+                                            <option>REM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="gap-field">
+                                    <span class="gap-label">Row</span>
+                                    <div class="input-group">
+                                        <input type="number" value="0" class="property-input" id="flexRowGap">
+                                        <select class="unit-select" id="flexRowGapUnit">
+                                            <option>PX</option>
+                                            <option>%</option>
+                                            <option>REM</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

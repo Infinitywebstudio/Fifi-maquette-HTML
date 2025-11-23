@@ -1085,6 +1085,67 @@ body {
     font-size: 14px;
 }
 
+/* Gap controls */
+.gap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.gap-header label {
+    margin: 0;
+}
+
+.link-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.link-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.link-btn.active {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+.gap-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gap-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gap-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    min-width: 45px;
+    text-transform: capitalize;
+}
+
+.gap-field .input-group {
+    flex: 1;
+}
+
 .width-controls,
 .height-controls,
 .display-controls,
