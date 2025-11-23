@@ -1233,7 +1233,7 @@ body {
 }
 
 .spacing-input {
-    width: 70px;
+    width: 80px;
     height: 28px;
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -1257,26 +1257,26 @@ body {
 
 /* Positioning for each side */
 .spacing-top {
-    top: 10px;
+    top: 5px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .spacing-right {
     top: 50%;
-    right: 20px;
+    right: 10px;
     transform: translateY(-50%);
 }
 
 .spacing-bottom {
-    bottom: 10px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .spacing-left {
     top: 50%;
-    left: 20px;
+    left: 10px;
     transform: translateY(-50%);
 }
 
