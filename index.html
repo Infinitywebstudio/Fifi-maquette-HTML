@@ -813,20 +813,19 @@
                                 </select>
                             </div>
 
-                            <!-- Color on second line with swatch + hex input + opacity slider -->
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <!-- Color on second line with hex input + opacity slider -->
+                            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 12px;">
                                 <label style="margin: 0; font-size: 11px; white-space: nowrap; min-width: 40px;">Color</label>
 
-                                <!-- Main color input (swatch + hex) in rounded container -->
-                                <div style="flex: 1; display: flex; align-items: center; gap: 6px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px; padding: 4px 8px 4px 4px;">
-                                    <input type="color" value="#000000" class="color-input" id="borderColor" style="margin: 0; width: 24px; height: 24px; padding: 0; border: none; border-radius: 4px; cursor: pointer;">
-                                    <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0; flex: 1; background: transparent; border: none; padding: 4px; font-size: 11px;">
+                                <!-- Hex color input in rounded container -->
+                                <div style="flex: 0 0 90px; display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 10px; padding: 5px 8px;">
+                                    <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0; width: 100%; background: transparent; border: none; padding: 0; font-size: 11px;">
                                 </div>
 
                                 <!-- Opacity slider -->
-                                <div style="flex: 1; display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 12px; padding: 6px 10px; gap: 6px;">
-                                    <input type="range" min="0" max="100" value="100" class="opacity-slider" id="borderOpacity" style="flex: 1; margin: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, transparent, var(--text-primary)); -webkit-appearance: none; appearance: none; cursor: pointer;">
-                                    <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); min-width: 30px; text-align: right;">100%</span>
+                                <div style="flex: 1; display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 10px; padding: 5px 8px; gap: 6px; min-width: 0;">
+                                    <input type="range" min="0" max="100" value="100" class="opacity-slider" id="borderOpacity" style="flex: 1; margin: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, transparent, var(--text-primary)); -webkit-appearance: none; appearance: none; cursor: pointer; min-width: 0;">
+                                    <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); min-width: 28px; text-align: right;">100%</span>
                                 </div>
                             </div>
 
