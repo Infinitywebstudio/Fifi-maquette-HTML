@@ -686,6 +686,12 @@
                 <div class="property-section">
                     <div class="section-header">
                         <span>Spacing</span>
+                        <select class="unit-select-inline" id="spacingUnit">
+                            <option>PX</option>
+                            <option>%</option>
+                            <option>REM</option>
+                            <option>EM</option>
+                        </select>
                     </div>
                     <div class="spacing-controls">
                         <!-- Tab buttons -->
@@ -710,15 +716,19 @@
                             <!-- Input fields positioned absolutely -->
                             <div class="spacing-inputs">
                                 <div class="spacing-input-field spacing-top">
+                                    <span class="spacing-label">T</span>
                                     <input type="number" value="0" class="spacing-input" id="marginTop" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-right">
+                                    <span class="spacing-label">R</span>
                                     <input type="number" value="0" class="spacing-input" id="marginRight" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-bottom">
+                                    <span class="spacing-label">B</span>
                                     <input type="number" value="0" class="spacing-input" id="marginBottom" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-left">
+                                    <span class="spacing-label">L</span>
                                     <input type="number" value="0" class="spacing-input" id="marginLeft" placeholder="0">
                                 </div>
                             </div>
@@ -740,115 +750,21 @@
                             <!-- Input fields positioned absolutely -->
                             <div class="spacing-inputs">
                                 <div class="spacing-input-field spacing-top">
+                                    <span class="spacing-label">T</span>
                                     <input type="number" value="0" class="spacing-input" id="paddingTop" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-right">
+                                    <span class="spacing-label">R</span>
                                     <input type="number" value="0" class="spacing-input" id="paddingRight" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-bottom">
+                                    <span class="spacing-label">B</span>
                                     <input type="number" value="0" class="spacing-input" id="paddingBottom" placeholder="0">
                                 </div>
                                 <div class="spacing-input-field spacing-left">
+                                    <span class="spacing-label">L</span>
                                     <input type="number" value="0" class="spacing-input" id="paddingLeft" placeholder="0">
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Unit selector -->
-                        <div class="spacing-unit">
-                            <label>Unit</label>
-                            <select class="unit-select" id="spacingUnit">
-                                <option>PX</option>
-                                <option>%</option>
-                                <option>REM</option>
-                                <option>EM</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Alignment -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Align</span>
-                    </div>
-                    <div class="align-controls">
-                        <button class="align-btn" title="Align Left">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="17" y1="10" x2="3" y2="10"/>
-                                <line x1="21" y1="6" x2="3" y2="6"/>
-                                <line x1="21" y1="14" x2="3" y2="14"/>
-                                <line x1="17" y1="18" x2="3" y2="18"/>
-                            </svg>
-                        </button>
-                        <button class="align-btn" title="Align Center">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="10" x2="6" y2="10"/>
-                                <line x1="21" y1="6" x2="3" y2="6"/>
-                                <line x1="21" y1="14" x2="3" y2="14"/>
-                                <line x1="18" y1="18" x2="6" y2="18"/>
-                            </svg>
-                        </button>
-                        <button class="align-btn" title="Align Right">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="21" y1="10" x2="7" y2="10"/>
-                                <line x1="21" y1="6" x2="3" y2="6"/>
-                                <line x1="21" y1="14" x2="3" y2="14"/>
-                                <line x1="21" y1="18" x2="7" y2="18"/>
-                            </svg>
-                        </button>
-                        <button class="align-btn" title="Justify">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="21" y1="10" x2="3" y2="10"/>
-                                <line x1="21" y1="6" x2="3" y2="6"/>
-                                <line x1="21" y1="14" x2="3" y2="14"/>
-                                <line x1="21" y1="18" x2="3" y2="18"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Section Size -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Size</span>
-                    </div>
-                    <div class="size-controls">
-                        <div class="input-group">
-                            <label>W</label>
-                            <input type="number" value="100" class="property-input">
-                            <select class="unit-select">
-                                <option>PX</option>
-                                <option>%</option>
-                                <option>VW</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>H</label>
-                            <input type="number" value="100" class="property-input">
-                            <select class="unit-select">
-                                <option>PX</option>
-                                <option>%</option>
-                                <option>VH</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Position -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Position</span>
-                    </div>
-                    <div class="position-controls">
-                        <div class="position-grid">
-                            <div class="input-wrapper">
-                                <label>X</label>
-                                <input type="number" value="0" class="property-input-sm">
-                            </div>
-                            <div class="input-wrapper">
-                                <label>Y</label>
-                                <input type="number" value="0" class="property-input-sm">
                             </div>
                         </div>
                     </div>
@@ -869,65 +785,6 @@
                             <input type="range" min="0" max="100" value="100" class="opacity-slider">
                             <span class="opacity-value">100%</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Section Stroke -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Stroke</span>
-                    </div>
-                    <div class="stroke-controls">
-                        <div class="input-group">
-                            <input type="number" value="4" class="property-input">
-                            <select class="unit-select">
-                                <option>PX</option>
-                            </select>
-                        </div>
-                        <div class="color-picker-wrapper">
-                            <input type="color" value="#000000" class="color-input">
-                            <input type="text" value="#000000" class="color-text">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Element Controls -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Controls</span>
-                    </div>
-                    <div class="element-controls">
-                        <button class="control-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="5" y="11" width="14" height="10" rx="2"/>
-                                <path d="M12 11V7"/>
-                                <circle cx="12" cy="7" r="2"/>
-                            </svg>
-                            Lock
-                        </button>
-                        <button class="control-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="5" y="2" width="14" height="20" rx="2"/>
-                                <line x1="12" y1="6" x2="12" y2="10"/>
-                            </svg>
-                            Unlock
-                        </button>
-                        <button class="control-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"/>
-                                <rect x="14" y="3" width="7" height="7"/>
-                                <rect x="14" y="14" width="7" height="7"/>
-                                <rect x="3" y="14" width="7" height="7"/>
-                            </svg>
-                            Group
-                        </button>
-                        <button class="control-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"/>
-                                <rect x="3" y="3" width="7" height="7"/>
-                            </svg>
-                            Ungroup
-                        </button>
                     </div>
                 </div>
             </div>

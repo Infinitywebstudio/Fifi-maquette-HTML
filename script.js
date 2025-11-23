@@ -1153,45 +1153,44 @@ function initializeSpacingControls() {
         }
     });
 
-    // Horizontal drag to adjust values (like Figma)
-    const allSpacingInputs = document.querySelectorAll('.spacing-input');
-    allSpacingInputs.forEach(input => {
+    // Horizontal drag to adjust values on labels (like Figma)
+    const allSpacingLabels = document.querySelectorAll('.spacing-label');
+    allSpacingLabels.forEach(label => {
         let isDragging = false;
-        let dragStarted = false;
         let startX = 0;
         let startValue = 0;
+        let targetInput = null;
 
-        input.addEventListener('mousedown', (e) => {
+        label.addEventListener('mousedown', (e) => {
+            e.preventDefault();
             isDragging = true;
-            dragStarted = false;
             startX = e.clientX;
-            startValue = parseInt(input.value) || 0;
+
+            // Find the associated input field
+            targetInput = label.parentElement.querySelector('.spacing-input');
+            if (targetInput) {
+                startValue = parseInt(targetInput.value) || 0;
+                document.body.style.cursor = 'ew-resize';
+            }
         });
 
         document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
+            if (!isDragging || !targetInput) return;
 
-            const deltaX = Math.abs(e.clientX - startX);
+            const movement = e.clientX - startX;
+            const newValue = Math.max(0, startValue + Math.round(movement / 2));
+            targetInput.value = newValue;
 
-            // Only start dragging if moved more than 3px (otherwise allow normal input)
-            if (deltaX > 3 && !dragStarted) {
-                dragStarted = true;
-                input.blur(); // Remove focus to prevent typing while dragging
-            }
-
-            if (dragStarted) {
-                const movement = e.clientX - startX;
-                const newValue = Math.max(0, startValue + Math.round(movement / 2));
-                input.value = newValue;
-
-                // Trigger input event to apply changes
-                input.dispatchEvent(new Event('input', { bubbles: true }));
-            }
+            // Trigger input event to apply changes
+            targetInput.dispatchEvent(new Event('input', { bubbles: true }));
         });
 
         document.addEventListener('mouseup', () => {
-            isDragging = false;
-            dragStarted = false;
+            if (isDragging) {
+                isDragging = false;
+                targetInput = null;
+                document.body.style.cursor = '';
+            }
         });
     });
 }
