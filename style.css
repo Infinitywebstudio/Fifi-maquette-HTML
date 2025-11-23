@@ -1078,8 +1078,10 @@ body {
     color: white;
 }
 
-.icon-btn svg {
+.icon-btn svg,
+.icon-btn i {
     pointer-events: none;
+    font-size: 14px;
 }
 
 .width-controls,
