@@ -873,13 +873,24 @@ function initializeContainerStyleControls() {
         });
     });
 
-    const flexJustify = document.getElementById('flexJustify');
+    // Justify buttons
+    const justifyButtons = document.querySelectorAll('[data-justify]');
+    justifyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            justifyButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
+
     const flexAlign = document.getElementById('flexAlign');
     const flexWrap = document.getElementById('flexWrap');
     const flexGap = document.getElementById('flexGap');
     const flexGapUnit = document.getElementById('flexGapUnit');
 
-    [flexJustify, flexAlign, flexWrap].forEach(select => {
+    [flexAlign, flexWrap].forEach(select => {
         select.addEventListener('change', () => {
             if (appState.selectedElement) {
                 applyFlexStyles();
@@ -982,7 +993,10 @@ function applyFlexStyles() {
     const activeDirectionBtn = document.querySelector('[data-direction].active');
     const flexDirection = activeDirectionBtn ? activeDirectionBtn.dataset.direction : 'row';
 
-    const flexJustify = document.getElementById('flexJustify').value;
+    // Get justify from active button
+    const activeJustifyBtn = document.querySelector('[data-justify].active');
+    const flexJustify = activeJustifyBtn ? activeJustifyBtn.dataset.justify : 'flex-start';
+
     const flexAlign = document.getElementById('flexAlign').value;
     const flexWrap = document.getElementById('flexWrap').value;
     const flexGap = document.getElementById('flexGap').value;

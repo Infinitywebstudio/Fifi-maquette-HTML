@@ -460,16 +460,52 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label>Justify Content</label>
-                            <select class="page-option-select" id="flexJustify">
-                                <option value="flex-start">Flex Start</option>
-                                <option value="center">Center</option>
-                                <option value="flex-end">Flex End</option>
-                                <option value="space-between">Space Between</option>
-                                <option value="space-around">Space Around</option>
-                                <option value="space-evenly">Space Evenly</option>
-                            </select>
+                        <div class="control-group-inline">
+                            <label>Justify</label>
+                            <div class="icon-button-group" id="flexJustifyButtons">
+                                <button class="icon-btn active" data-justify="flex-start" title="Flex Start">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="4" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="9" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="14" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="icon-btn" data-justify="center" title="Center">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="6" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="10.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="15" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="icon-btn" data-justify="flex-end" title="Flex End">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="7" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="12" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="17" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="icon-btn" data-justify="space-between" title="Space Between">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="4" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="10.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="17" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="icon-btn" data-justify="space-around" title="Space Around">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="10.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="16" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="icon-btn" data-justify="space-evenly" title="Space Evenly">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="5.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="10.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                        <rect x="15.5" y="5" width="3" height="14" rx="1" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="control-group">
                             <label>Align Items</label>
