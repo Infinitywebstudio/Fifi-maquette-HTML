@@ -802,9 +802,9 @@
                         <!-- Style control (visible by default) -->
                         <div class="border-style-wrapper" id="borderStyleControl">
                             <!-- Type and Color on same line -->
-                            <div style="display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 8px 12px; align-items: center; margin-bottom: 12px;">
-                                <label style="margin: 0;">Type</label>
-                                <select class="page-option-select" id="borderStyle" style="margin: 0;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <label style="margin: 0; font-size: 11px; white-space: nowrap;">Type</label>
+                                <select class="page-option-select" id="borderStyle" style="margin: 0; flex: 1; min-width: 0; padding: 6px 8px; font-size: 11px;">
                                     <option value="none">None</option>
                                     <option value="solid">Solid</option>
                                     <option value="dashed">Dashed</option>
@@ -812,8 +812,9 @@
                                     <option value="double">Double</option>
                                 </select>
 
-                                <label style="margin: 0;">Color</label>
-                                <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0;">
+                                <label style="margin: 0; font-size: 11px; white-space: nowrap;">Color</label>
+                                <input type="color" value="#000000" class="color-input" id="borderColor" style="margin: 0; width: 32px; height: 24px; padding: 2px;">
+                                <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0; width: 70px; padding: 4px 6px; font-size: 11px;">
                             </div>
 
                             <!-- Border Width with visual control -->
