@@ -1465,22 +1465,10 @@ body {
     border-radius: 2px;
 }
 
-/* Spacing center box default and active state */
+/* Spacing center box */
 .spacing-center-box {
     fill: #2a2a2a;
     stroke: #444;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.spacing-visual.active .spacing-center-box {
-    fill: var(--accent-blue);
-    stroke: var(--accent-blue);
-}
-
-.spacing-visual.active .spacing-line {
-    stroke: var(--accent-blue);
-    opacity: 1;
 }
 
 /* Responsive */

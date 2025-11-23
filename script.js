@@ -1117,40 +1117,6 @@ function initializeSpacingControls() {
         });
     });
 
-    // Center box toggle for linked values
-    const marginSvg = document.getElementById('marginSvg');
-    const paddingSvg = document.getElementById('paddingSvg');
-    let marginLinked = false;
-    let paddingLinked = false;
-
-    if (marginSvg) {
-        const marginCenterBox = marginSvg.querySelector('.spacing-center-box');
-        if (marginCenterBox) {
-            marginCenterBox.addEventListener('click', () => {
-                marginLinked = !marginLinked;
-                if (marginLinked) {
-                    marginSvg.classList.add('active');
-                } else {
-                    marginSvg.classList.remove('active');
-                }
-            });
-        }
-    }
-
-    if (paddingSvg) {
-        const paddingCenterBox = paddingSvg.querySelector('.spacing-center-box');
-        if (paddingCenterBox) {
-            paddingCenterBox.addEventListener('click', () => {
-                paddingLinked = !paddingLinked;
-                if (paddingLinked) {
-                    paddingSvg.classList.add('active');
-                } else {
-                    paddingSvg.classList.remove('active');
-                }
-            });
-        }
-    }
-
     // Margin inputs
     const marginTop = document.getElementById('marginTop');
     const marginRight = document.getElementById('marginRight');
@@ -1298,40 +1264,6 @@ function initializeBorderControls() {
             }
         });
     });
-
-    // Center box toggle for Border Width and Radius
-    const borderWidthSvg = document.getElementById('borderWidthSvg');
-    const borderRadiusSvg = document.getElementById('borderRadiusSvg');
-    let borderWidthLinked = false;
-    let borderRadiusLinked = false;
-
-    if (borderWidthSvg) {
-        const borderWidthCenterBox = borderWidthSvg.querySelector('.spacing-center-box');
-        if (borderWidthCenterBox) {
-            borderWidthCenterBox.addEventListener('click', () => {
-                borderWidthLinked = !borderWidthLinked;
-                if (borderWidthLinked) {
-                    borderWidthSvg.classList.add('active');
-                } else {
-                    borderWidthSvg.classList.remove('active');
-                }
-            });
-        }
-    }
-
-    if (borderRadiusSvg) {
-        const borderRadiusCenterBox = borderRadiusSvg.querySelector('.spacing-center-box');
-        if (borderRadiusCenterBox) {
-            borderRadiusCenterBox.addEventListener('click', () => {
-                borderRadiusLinked = !borderRadiusLinked;
-                if (borderRadiusLinked) {
-                    borderRadiusSvg.classList.add('active');
-                } else {
-                    borderRadiusSvg.classList.remove('active');
-                }
-            });
-        }
-    }
 
     // Border style
     if (borderStyle) {
