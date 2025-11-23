@@ -1241,7 +1241,7 @@ body {
     color: var(--text-primary);
     font-size: 11px;
     text-align: center;
-    padding: 0 5px;
+    padding: 0 5px 0 15px;
     box-sizing: border-box;
     transition: all 0.2s;
 }
