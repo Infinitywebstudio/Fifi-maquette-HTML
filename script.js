@@ -885,17 +885,26 @@ function initializeContainerStyleControls() {
         });
     });
 
-    const flexAlign = document.getElementById('flexAlign');
-    const flexWrap = document.getElementById('flexWrap');
-    const flexGap = document.getElementById('flexGap');
-    const flexGapUnit = document.getElementById('flexGapUnit');
-
-    [flexAlign, flexWrap].forEach(select => {
-        select.addEventListener('change', () => {
+    // Align Items buttons
+    const alignButtons = document.querySelectorAll('[data-align]');
+    alignButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            alignButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             if (appState.selectedElement) {
                 applyFlexStyles();
             }
         });
+    });
+
+    const flexWrap = document.getElementById('flexWrap');
+    const flexGap = document.getElementById('flexGap');
+    const flexGapUnit = document.getElementById('flexGapUnit');
+
+    flexWrap.addEventListener('change', () => {
+        if (appState.selectedElement) {
+            applyFlexStyles();
+        }
     });
 
     [flexGap, flexGapUnit].forEach(input => {
@@ -997,7 +1006,10 @@ function applyFlexStyles() {
     const activeJustifyBtn = document.querySelector('[data-justify].active');
     const flexJustify = activeJustifyBtn ? activeJustifyBtn.dataset.justify : 'flex-start';
 
-    const flexAlign = document.getElementById('flexAlign').value;
+    // Get align from active button
+    const activeAlignBtn = document.querySelector('[data-align].active');
+    const flexAlign = activeAlignBtn ? activeAlignBtn.dataset.align : 'flex-start';
+
     const flexWrap = document.getElementById('flexWrap').value;
     const flexGap = document.getElementById('flexGap').value;
     const flexGapUnit = document.getElementById('flexGapUnit').value.toLowerCase();
