@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializePanelToggle();
     initializeRightPanelTabs();
     initializeContainerStyleControls();
+    initializeSpacingControls();
 });
 
 // ===== SIDEBAR MENU NAVIGATION =====
@@ -1087,6 +1088,97 @@ function applyGridStyles() {
         appState.selectedElement.style.gridTemplateColumns = gridColumns;
         appState.selectedElement.style.gridTemplateRows = gridRows;
         appState.selectedElement.style.gap = gridGap + gridGapUnit;
+    }
+}
+
+// ===== SPACING CONTROLS (MARGINS & PADDING) =====
+
+function initializeSpacingControls() {
+    const spacingTabs = document.querySelectorAll('.spacing-tab');
+    const marginControl = document.getElementById('marginControl');
+    const paddingControl = document.getElementById('paddingControl');
+    const spacingUnit = document.getElementById('spacingUnit');
+
+    // Tab switching
+    spacingTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            spacingTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const spacing = tab.dataset.spacing;
+            if (spacing === 'margin') {
+                marginControl.style.display = 'block';
+                paddingControl.style.display = 'none';
+            } else {
+                marginControl.style.display = 'none';
+                paddingControl.style.display = 'block';
+            }
+        });
+    });
+
+    // Margin inputs
+    const marginTop = document.getElementById('marginTop');
+    const marginRight = document.getElementById('marginRight');
+    const marginBottom = document.getElementById('marginBottom');
+    const marginLeft = document.getElementById('marginLeft');
+
+    [marginTop, marginRight, marginBottom, marginLeft].forEach(input => {
+        input.addEventListener('input', () => {
+            if (appState.selectedElement) {
+                applySpacing('margin');
+            }
+        });
+    });
+
+    // Padding inputs
+    const paddingTop = document.getElementById('paddingTop');
+    const paddingRight = document.getElementById('paddingRight');
+    const paddingBottom = document.getElementById('paddingBottom');
+    const paddingLeft = document.getElementById('paddingLeft');
+
+    [paddingTop, paddingRight, paddingBottom, paddingLeft].forEach(input => {
+        input.addEventListener('input', () => {
+            if (appState.selectedElement) {
+                applySpacing('padding');
+            }
+        });
+    });
+
+    // Unit change
+    spacingUnit.addEventListener('change', () => {
+        if (appState.selectedElement) {
+            const activeTab = document.querySelector('.spacing-tab.active');
+            const spacing = activeTab ? activeTab.dataset.spacing : 'margin';
+            applySpacing(spacing);
+        }
+    });
+}
+
+function applySpacing(type) {
+    if (!appState.selectedElement) return;
+
+    const unit = document.getElementById('spacingUnit').value.toLowerCase();
+
+    if (type === 'margin') {
+        const top = document.getElementById('marginTop').value || 0;
+        const right = document.getElementById('marginRight').value || 0;
+        const bottom = document.getElementById('marginBottom').value || 0;
+        const left = document.getElementById('marginLeft').value || 0;
+
+        appState.selectedElement.style.marginTop = top + unit;
+        appState.selectedElement.style.marginRight = right + unit;
+        appState.selectedElement.style.marginBottom = bottom + unit;
+        appState.selectedElement.style.marginLeft = left + unit;
+    } else if (type === 'padding') {
+        const top = document.getElementById('paddingTop').value || 0;
+        const right = document.getElementById('paddingRight').value || 0;
+        const bottom = document.getElementById('paddingBottom').value || 0;
+        const left = document.getElementById('paddingLeft').value || 0;
+
+        appState.selectedElement.style.paddingTop = top + unit;
+        appState.selectedElement.style.paddingRight = right + unit;
+        appState.selectedElement.style.paddingBottom = bottom + unit;
+        appState.selectedElement.style.paddingLeft = left + unit;
     }
 }
 

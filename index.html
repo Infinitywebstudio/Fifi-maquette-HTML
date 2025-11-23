@@ -682,6 +682,91 @@
                     </div>
                 </div>
 
+                <!-- Section Margins & Padding -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Margins & Padding</span>
+                    </div>
+                    <div class="spacing-controls">
+                        <!-- Tab buttons -->
+                        <div class="spacing-tabs">
+                            <button class="spacing-tab active" data-spacing="margin">Margin</button>
+                            <button class="spacing-tab" data-spacing="padding">Padding</button>
+                        </div>
+
+                        <!-- Margin control (visible by default) -->
+                        <div class="spacing-input-wrapper" id="marginControl">
+                            <svg class="spacing-visual" width="100%" height="140" viewBox="0 0 200 140">
+                                <!-- Connection lines -->
+                                <line x1="100" y1="20" x2="100" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="150" y1="70" x2="120" y2="70" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="90" x2="100" y2="120" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="50" y1="70" x2="80" y2="70" stroke="#555" stroke-width="1" opacity="0.3"/>
+
+                                <!-- Center box -->
+                                <rect x="80" y="50" width="40" height="40" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
+                            </svg>
+
+                            <!-- Input fields positioned absolutely -->
+                            <div class="spacing-inputs">
+                                <div class="spacing-input-field spacing-top">
+                                    <input type="number" value="0" class="spacing-input" id="marginTop" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-right">
+                                    <input type="number" value="0" class="spacing-input" id="marginRight" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-bottom">
+                                    <input type="number" value="0" class="spacing-input" id="marginBottom" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-left">
+                                    <input type="number" value="0" class="spacing-input" id="marginLeft" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Padding control (hidden by default) -->
+                        <div class="spacing-input-wrapper" id="paddingControl" style="display: none;">
+                            <svg class="spacing-visual" width="100%" height="140" viewBox="0 0 200 140">
+                                <!-- Connection lines -->
+                                <line x1="100" y1="20" x2="100" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="150" y1="70" x2="120" y2="70" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="90" x2="100" y2="120" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="50" y1="70" x2="80" y2="70" stroke="#555" stroke-width="1" opacity="0.3"/>
+
+                                <!-- Center box -->
+                                <rect x="80" y="50" width="40" height="40" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
+                            </svg>
+
+                            <!-- Input fields positioned absolutely -->
+                            <div class="spacing-inputs">
+                                <div class="spacing-input-field spacing-top">
+                                    <input type="number" value="0" class="spacing-input" id="paddingTop" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-right">
+                                    <input type="number" value="0" class="spacing-input" id="paddingRight" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-bottom">
+                                    <input type="number" value="0" class="spacing-input" id="paddingBottom" placeholder="0">
+                                </div>
+                                <div class="spacing-input-field spacing-left">
+                                    <input type="number" value="0" class="spacing-input" id="paddingLeft" placeholder="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Unit selector -->
+                        <div class="spacing-unit">
+                            <label>Unit</label>
+                            <select class="unit-select" id="spacingUnit">
+                                <option>PX</option>
+                                <option>%</option>
+                                <option>REM</option>
+                                <option>EM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Alignment -->
                 <div class="property-section">
                     <div class="section-header">

@@ -1169,6 +1169,134 @@ body {
     gap: 10px;
 }
 
+/* Spacing controls (Margins & Padding) */
+.spacing-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.spacing-tabs {
+    display: flex;
+    gap: 4px;
+    background-color: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 3px;
+}
+
+.spacing-tab {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.spacing-tab:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.spacing-tab.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.spacing-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.spacing-visual {
+    display: block;
+    max-width: 100%;
+}
+
+.spacing-inputs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.spacing-input-field {
+    position: absolute;
+    pointer-events: all;
+}
+
+.spacing-input {
+    width: 48px;
+    height: 28px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 11px;
+    text-align: center;
+    padding: 0 4px;
+    transition: all 0.2s;
+}
+
+.spacing-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: var(--bg-primary);
+}
+
+.spacing-input:hover {
+    border-color: var(--text-secondary);
+}
+
+/* Positioning for each side */
+.spacing-top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.spacing-right {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.spacing-bottom {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.spacing-left {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.spacing-unit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.spacing-unit label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    min-width: 30px;
+}
+
+.spacing-unit .unit-select {
+    flex: 1;
+}
+
 /* Éléments sur le canvas */
 .canvas-element {
     position: absolute;
