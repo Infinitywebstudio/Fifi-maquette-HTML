@@ -1465,6 +1465,17 @@ body {
     border-radius: 2px;
 }
 
+/* Spacing center box active state */
+.spacing-visual.active .spacing-center-box {
+    fill: var(--accent-blue) !important;
+    stroke: var(--accent-blue) !important;
+}
+
+.spacing-visual.active .spacing-line {
+    stroke: var(--accent-blue) !important;
+    opacity: 1 !important;
+}
+
 /* Responsive */
 @media (max-width: 1400px) {
     .left-panel {

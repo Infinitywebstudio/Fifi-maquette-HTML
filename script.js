@@ -1117,6 +1117,30 @@ function initializeSpacingControls() {
         });
     });
 
+    // Center box toggle for linked values
+    const marginSvg = document.getElementById('marginSvg');
+    const paddingSvg = document.getElementById('paddingSvg');
+    let marginLinked = false;
+    let paddingLinked = false;
+
+    marginSvg.querySelector('.spacing-center-box').addEventListener('click', () => {
+        marginLinked = !marginLinked;
+        if (marginLinked) {
+            marginSvg.classList.add('active');
+        } else {
+            marginSvg.classList.remove('active');
+        }
+    });
+
+    paddingSvg.querySelector('.spacing-center-box').addEventListener('click', () => {
+        paddingLinked = !paddingLinked;
+        if (paddingLinked) {
+            paddingSvg.classList.add('active');
+        } else {
+            paddingSvg.classList.remove('active');
+        }
+    });
+
     // Margin inputs
     const marginTop = document.getElementById('marginTop');
     const marginRight = document.getElementById('marginRight');
