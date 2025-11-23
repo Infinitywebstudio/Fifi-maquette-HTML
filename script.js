@@ -1228,8 +1228,8 @@ function applySpacing(type) {
 
 function initializeBorderControls() {
     const borderStyle = document.getElementById('borderStyle');
-    const borderColor = document.getElementById('borderColor');
     const borderColorText = document.getElementById('borderColorText');
+    const borderColorPreview = document.getElementById('borderColorPreview');
 
     // Tab switching for Border (Style/Radius)
     const borderTabs = document.querySelectorAll('.spacing-tab[data-border]');
@@ -1259,16 +1259,10 @@ function initializeBorderControls() {
         }
     });
 
-    // Border color sync
-    borderColor.addEventListener('input', (e) => {
-        borderColorText.value = e.target.value;
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
-
+    // Border color input - update preview rectangle
     borderColorText.addEventListener('input', (e) => {
-        borderColor.value = e.target.value;
+        const color = e.target.value;
+        borderColorPreview.style.backgroundColor = color;
         if (appState.selectedElement) {
             applyBorder();
         }
