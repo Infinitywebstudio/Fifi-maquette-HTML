@@ -758,8 +758,6 @@ function initializeContainerStyleControls() {
     const customWidthControls = document.querySelector('.custom-width-controls');
     const widthValue = document.getElementById('widthValue');
     const widthUnit = document.getElementById('widthUnit');
-    const maxWidthValue = document.getElementById('maxWidthValue');
-    const maxWidthUnit = document.getElementById('maxWidthUnit');
 
     widthButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -783,32 +781,19 @@ function initializeContainerStyleControls() {
     });
 
     // Width value change
-    [widthValue, widthUnit].forEach(input => {
-        input.addEventListener('change', () => {
-            if (appState.selectedElement) {
-                applyWidthStyle('custom');
-            }
-        });
-    });
-
-    // Max width change
-    [maxWidthValue, maxWidthUnit].forEach(input => {
-        input.addEventListener('change', () => {
-            if (appState.selectedElement) {
-                const value = maxWidthValue.value;
-                const unit = maxWidthUnit.value.toLowerCase();
-                if (value) {
-                    appState.selectedElement.style.maxWidth = value + unit;
-                } else {
-                    appState.selectedElement.style.maxWidth = 'none';
+    if (widthValue && widthUnit) {
+        [widthValue, widthUnit].forEach(input => {
+            input.addEventListener('change', () => {
+                if (appState.selectedElement) {
+                    applyWidthStyle('custom');
                 }
-            }
+            });
         });
-    });
+    }
 
     // Height Controls
     const heightButtons = document.querySelectorAll('[data-height-type]');
-    const heightValueControls = document.querySelector('.height-value-controls');
+    const customHeightControls = document.querySelector('.custom-height-controls');
     const heightValue = document.getElementById('heightValue');
     const heightUnit = document.getElementById('heightUnit');
 
@@ -819,11 +804,11 @@ function initializeContainerStyleControls() {
 
             const heightType = btn.dataset.heightType;
 
-            // Show/hide height value controls
-            if (heightType === 'min' || heightType === 'fixed') {
-                heightValueControls.style.display = 'block';
+            // Show/hide custom height controls
+            if (heightType === 'custom') {
+                customHeightControls.style.display = 'block';
             } else {
-                heightValueControls.style.display = 'none';
+                customHeightControls.style.display = 'none';
             }
 
             // Apply height to selected element
@@ -834,16 +819,15 @@ function initializeContainerStyleControls() {
     });
 
     // Height value change
-    [heightValue, heightUnit].forEach(input => {
-        input.addEventListener('change', () => {
-            if (appState.selectedElement) {
-                const activeHeightBtn = document.querySelector('[data-height-type].active');
-                if (activeHeightBtn) {
-                    applyHeightStyle(activeHeightBtn.dataset.heightType);
+    if (heightValue && heightUnit) {
+        [heightValue, heightUnit].forEach(input => {
+            input.addEventListener('change', () => {
+                if (appState.selectedElement) {
+                    applyHeightStyle('custom');
                 }
-            }
+            });
         });
-    });
+    }
 
     // Display Controls
     const displayButtons = document.querySelectorAll('[data-display-type]');
@@ -942,39 +926,40 @@ function initializeContainerStyleControls() {
 
 // Helper functions to apply styles
 function applyWidthStyle(widthType) {
-    const widthValue = document.getElementById('widthValue').value;
-    const widthUnit = document.getElementById('widthUnit').value.toLowerCase();
+    if (!appState.selectedElement) return;
+
+    const widthValue = document.getElementById('widthValue');
+    const widthUnit = document.getElementById('widthUnit');
 
     switch(widthType) {
         case 'full':
             appState.selectedElement.style.width = '100%';
             break;
-        case 'boxed':
+        case 'auto':
             appState.selectedElement.style.width = 'auto';
-            appState.selectedElement.style.maxWidth = '1200px';
             break;
         case 'custom':
-            appState.selectedElement.style.width = widthValue + widthUnit;
+            if (widthValue && widthUnit) {
+                appState.selectedElement.style.width = widthValue.value + widthUnit.value.toLowerCase();
+            }
             break;
     }
 }
 
 function applyHeightStyle(heightType) {
-    const heightValue = document.getElementById('heightValue').value;
-    const heightUnit = document.getElementById('heightUnit').value.toLowerCase();
+    if (!appState.selectedElement) return;
+
+    const heightValue = document.getElementById('heightValue');
+    const heightUnit = document.getElementById('heightUnit');
 
     switch(heightType) {
         case 'auto':
             appState.selectedElement.style.height = 'auto';
-            appState.selectedElement.style.minHeight = '';
             break;
-        case 'min':
-            appState.selectedElement.style.height = 'auto';
-            appState.selectedElement.style.minHeight = heightValue + heightUnit;
-            break;
-        case 'fixed':
-            appState.selectedElement.style.height = heightValue + heightUnit;
-            appState.selectedElement.style.minHeight = '';
+        case 'custom':
+            if (heightValue && heightUnit) {
+                appState.selectedElement.style.height = heightValue.value + heightUnit.value.toLowerCase();
+            }
             break;
     }
 }

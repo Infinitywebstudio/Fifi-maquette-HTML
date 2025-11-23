@@ -1029,7 +1029,8 @@ body {
 .width-controls,
 .height-controls,
 .display-controls,
-.overflow-controls {
+.overflow-controls,
+.dimension-controls {
     display: flex;
     flex-direction: column;
 }

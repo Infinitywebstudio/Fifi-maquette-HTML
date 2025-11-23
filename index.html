@@ -411,65 +411,6 @@
 
             <!-- Contenu Layer Style -->
             <div class="properties-container layer-style-content">
-                <!-- Section Width -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Width</span>
-                    </div>
-                    <div class="width-controls">
-                        <div class="button-group">
-                            <button class="option-btn active" data-width-type="full">Full Width</button>
-                            <button class="option-btn" data-width-type="boxed">Boxed</button>
-                            <button class="option-btn" data-width-type="custom">Custom</button>
-                        </div>
-                        <div class="custom-width-controls" style="display: none; margin-top: 8px;">
-                            <div class="input-group">
-                                <input type="number" value="100" class="property-input" id="widthValue">
-                                <select class="unit-select" id="widthUnit">
-                                    <option>PX</option>
-                                    <option>%</option>
-                                    <option>VW</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="max-width-controls" style="margin-top: 8px;">
-                            <label style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; display: block;">Max Width</label>
-                            <div class="input-group">
-                                <input type="number" value="" placeholder="None" class="property-input" id="maxWidthValue">
-                                <select class="unit-select" id="maxWidthUnit">
-                                    <option>PX</option>
-                                    <option>%</option>
-                                    <option>VW</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Height -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Height</span>
-                    </div>
-                    <div class="height-controls">
-                        <div class="button-group">
-                            <button class="option-btn active" data-height-type="auto">Auto</button>
-                            <button class="option-btn" data-height-type="min">Min Height</button>
-                            <button class="option-btn" data-height-type="fixed">Fixed</button>
-                        </div>
-                        <div class="height-value-controls" style="display: none; margin-top: 8px;">
-                            <div class="input-group">
-                                <input type="number" value="100" class="property-input" id="heightValue">
-                                <select class="unit-select" id="heightUnit">
-                                    <option>PX</option>
-                                    <option>%</option>
-                                    <option>VH</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Section Display -->
                 <div class="property-section">
                     <div class="section-header">
@@ -581,6 +522,50 @@
                             <button class="option-btn" data-overflow-type="hidden">Hidden</button>
                             <button class="option-btn" data-overflow-type="scroll">Scroll</button>
                             <button class="option-btn" data-overflow-type="auto">Auto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Dimension -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Dimension</span>
+                    </div>
+                    <div class="dimension-controls">
+                        <div class="control-group">
+                            <label>Width</label>
+                            <div class="button-group">
+                                <button class="option-btn active" data-width-type="full">Full</button>
+                                <button class="option-btn" data-width-type="auto">Auto</button>
+                                <button class="option-btn" data-width-type="custom">Custom</button>
+                            </div>
+                            <div class="custom-width-controls" style="display: none; margin-top: 8px;">
+                                <div class="input-group">
+                                    <input type="number" value="100" class="property-input" id="widthValue">
+                                    <select class="unit-select" id="widthUnit">
+                                        <option>PX</option>
+                                        <option>%</option>
+                                        <option>VW</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Height</label>
+                            <div class="button-group">
+                                <button class="option-btn active" data-height-type="auto">Auto</button>
+                                <button class="option-btn" data-height-type="custom">Custom</button>
+                            </div>
+                            <div class="custom-height-controls" style="display: none; margin-top: 8px;">
+                                <div class="input-group">
+                                    <input type="number" value="100" class="property-input" id="heightValue">
+                                    <select class="unit-select" id="heightUnit">
+                                        <option>PX</option>
+                                        <option>%</option>
+                                        <option>VH</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
