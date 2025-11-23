@@ -1026,6 +1026,62 @@ body {
     text-transform: capitalize;
 }
 
+/* Control group inline (label + buttons sur la même ligne) */
+.control-group-inline {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.control-group-inline label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Icon button group */
+.icon-button-group {
+    display: flex;
+    gap: 2px;
+    background-color: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.icon-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    width: 32px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.icon-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.icon-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.icon-btn svg {
+    pointer-events: none;
+}
+
 .width-controls,
 .height-controls,
 .display-controls,

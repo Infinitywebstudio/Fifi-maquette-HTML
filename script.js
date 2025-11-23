@@ -861,14 +861,25 @@ function initializeContainerStyleControls() {
     });
 
     // Flex Controls
-    const flexDirection = document.getElementById('flexDirection');
+    // Direction buttons
+    const directionButtons = document.querySelectorAll('[data-direction]');
+    directionButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            directionButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
+
     const flexJustify = document.getElementById('flexJustify');
     const flexAlign = document.getElementById('flexAlign');
     const flexWrap = document.getElementById('flexWrap');
     const flexGap = document.getElementById('flexGap');
     const flexGapUnit = document.getElementById('flexGapUnit');
 
-    [flexDirection, flexJustify, flexAlign, flexWrap].forEach(select => {
+    [flexJustify, flexAlign, flexWrap].forEach(select => {
         select.addEventListener('change', () => {
             if (appState.selectedElement) {
                 applyFlexStyles();
@@ -965,20 +976,23 @@ function applyHeightStyle(heightType) {
 }
 
 function applyFlexStyles() {
-    const flexDirection = document.getElementById('flexDirection').value;
+    if (!appState.selectedElement) return;
+
+    // Get direction from active button
+    const activeDirectionBtn = document.querySelector('[data-direction].active');
+    const flexDirection = activeDirectionBtn ? activeDirectionBtn.dataset.direction : 'row';
+
     const flexJustify = document.getElementById('flexJustify').value;
     const flexAlign = document.getElementById('flexAlign').value;
     const flexWrap = document.getElementById('flexWrap').value;
     const flexGap = document.getElementById('flexGap').value;
     const flexGapUnit = document.getElementById('flexGapUnit').value.toLowerCase();
 
-    if (appState.selectedElement) {
-        appState.selectedElement.style.flexDirection = flexDirection;
-        appState.selectedElement.style.justifyContent = flexJustify;
-        appState.selectedElement.style.alignItems = flexAlign;
-        appState.selectedElement.style.flexWrap = flexWrap;
-        appState.selectedElement.style.gap = flexGap + flexGapUnit;
-    }
+    appState.selectedElement.style.flexDirection = flexDirection;
+    appState.selectedElement.style.justifyContent = flexJustify;
+    appState.selectedElement.style.alignItems = flexAlign;
+    appState.selectedElement.style.flexWrap = flexWrap;
+    appState.selectedElement.style.gap = flexGap + flexGapUnit;
 }
 
 function applyGridStyles() {
