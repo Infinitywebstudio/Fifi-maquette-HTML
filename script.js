@@ -1288,6 +1288,30 @@ function initializeBorderControls() {
         });
     });
 
+    // Center box toggle for Border Width and Radius
+    const borderWidthSvg = document.getElementById('borderWidthSvg');
+    const borderRadiusSvg = document.getElementById('borderRadiusSvg');
+    let borderWidthLinked = false;
+    let borderRadiusLinked = false;
+
+    borderWidthSvg.querySelector('.spacing-center-box').addEventListener('click', () => {
+        borderWidthLinked = !borderWidthLinked;
+        if (borderWidthLinked) {
+            borderWidthSvg.classList.add('active');
+        } else {
+            borderWidthSvg.classList.remove('active');
+        }
+    });
+
+    borderRadiusSvg.querySelector('.spacing-center-box').addEventListener('click', () => {
+        borderRadiusLinked = !borderRadiusLinked;
+        if (borderRadiusLinked) {
+            borderRadiusSvg.classList.add('active');
+        } else {
+            borderRadiusSvg.classList.remove('active');
+        }
+    });
+
     // Border style
     borderStyle.addEventListener('change', () => {
         if (appState.selectedElement) {
