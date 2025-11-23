@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeLayersTabs();
     initializePanelToggle();
     initializeRightPanelTabs();
+    initializeContainerStyleControls();
 });
 
 // ===== SIDEBAR MENU NAVIGATION =====
@@ -747,6 +748,265 @@ function initializeRightPanelTabs() {
             }
         });
     });
+}
+
+// ===== CONTAINER STYLE CONTROLS =====
+
+function initializeContainerStyleControls() {
+    // Width Controls
+    const widthButtons = document.querySelectorAll('[data-width-type]');
+    const customWidthControls = document.querySelector('.custom-width-controls');
+    const widthValue = document.getElementById('widthValue');
+    const widthUnit = document.getElementById('widthUnit');
+    const maxWidthValue = document.getElementById('maxWidthValue');
+    const maxWidthUnit = document.getElementById('maxWidthUnit');
+
+    widthButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            widthButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const widthType = btn.dataset.widthType;
+
+            // Show/hide custom width controls
+            if (widthType === 'custom') {
+                customWidthControls.style.display = 'block';
+            } else {
+                customWidthControls.style.display = 'none';
+            }
+
+            // Apply width to selected element
+            if (appState.selectedElement) {
+                applyWidthStyle(widthType);
+            }
+        });
+    });
+
+    // Width value change
+    [widthValue, widthUnit].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyWidthStyle('custom');
+            }
+        });
+    });
+
+    // Max width change
+    [maxWidthValue, maxWidthUnit].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                const value = maxWidthValue.value;
+                const unit = maxWidthUnit.value.toLowerCase();
+                if (value) {
+                    appState.selectedElement.style.maxWidth = value + unit;
+                } else {
+                    appState.selectedElement.style.maxWidth = 'none';
+                }
+            }
+        });
+    });
+
+    // Height Controls
+    const heightButtons = document.querySelectorAll('[data-height-type]');
+    const heightValueControls = document.querySelector('.height-value-controls');
+    const heightValue = document.getElementById('heightValue');
+    const heightUnit = document.getElementById('heightUnit');
+
+    heightButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            heightButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const heightType = btn.dataset.heightType;
+
+            // Show/hide height value controls
+            if (heightType === 'min' || heightType === 'fixed') {
+                heightValueControls.style.display = 'block';
+            } else {
+                heightValueControls.style.display = 'none';
+            }
+
+            // Apply height to selected element
+            if (appState.selectedElement) {
+                applyHeightStyle(heightType);
+            }
+        });
+    });
+
+    // Height value change
+    [heightValue, heightUnit].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                const activeHeightBtn = document.querySelector('[data-height-type].active');
+                if (activeHeightBtn) {
+                    applyHeightStyle(activeHeightBtn.dataset.heightType);
+                }
+            }
+        });
+    });
+
+    // Display Controls
+    const displayButtons = document.querySelectorAll('[data-display-type]');
+    const flexOptions = document.querySelector('.flex-options');
+    const gridOptions = document.querySelector('.grid-options');
+
+    displayButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            displayButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const displayType = btn.dataset.displayType;
+
+            // Show/hide flex and grid options
+            if (displayType === 'flex') {
+                flexOptions.style.display = 'block';
+                gridOptions.style.display = 'none';
+            } else if (displayType === 'grid') {
+                flexOptions.style.display = 'none';
+                gridOptions.style.display = 'block';
+            } else {
+                flexOptions.style.display = 'none';
+                gridOptions.style.display = 'none';
+            }
+
+            // Apply display to selected element
+            if (appState.selectedElement) {
+                appState.selectedElement.style.display = displayType;
+            }
+        });
+    });
+
+    // Flex Controls
+    const flexDirection = document.getElementById('flexDirection');
+    const flexJustify = document.getElementById('flexJustify');
+    const flexAlign = document.getElementById('flexAlign');
+    const flexWrap = document.getElementById('flexWrap');
+    const flexGap = document.getElementById('flexGap');
+    const flexGapUnit = document.getElementById('flexGapUnit');
+
+    [flexDirection, flexJustify, flexAlign, flexWrap].forEach(select => {
+        select.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
+
+    [flexGap, flexGapUnit].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyFlexStyles();
+            }
+        });
+    });
+
+    // Grid Controls
+    const gridColumns = document.getElementById('gridColumns');
+    const gridRows = document.getElementById('gridRows');
+    const gridGap = document.getElementById('gridGap');
+    const gridGapUnit = document.getElementById('gridGapUnit');
+
+    [gridColumns, gridRows].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyGridStyles();
+            }
+        });
+    });
+
+    [gridGap, gridGapUnit].forEach(input => {
+        input.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyGridStyles();
+            }
+        });
+    });
+
+    // Overflow Controls
+    const overflowButtons = document.querySelectorAll('[data-overflow-type]');
+
+    overflowButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            overflowButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const overflowType = btn.dataset.overflowType;
+
+            // Apply overflow to selected element
+            if (appState.selectedElement) {
+                appState.selectedElement.style.overflow = overflowType;
+            }
+        });
+    });
+}
+
+// Helper functions to apply styles
+function applyWidthStyle(widthType) {
+    const widthValue = document.getElementById('widthValue').value;
+    const widthUnit = document.getElementById('widthUnit').value.toLowerCase();
+
+    switch(widthType) {
+        case 'full':
+            appState.selectedElement.style.width = '100%';
+            break;
+        case 'boxed':
+            appState.selectedElement.style.width = 'auto';
+            appState.selectedElement.style.maxWidth = '1200px';
+            break;
+        case 'custom':
+            appState.selectedElement.style.width = widthValue + widthUnit;
+            break;
+    }
+}
+
+function applyHeightStyle(heightType) {
+    const heightValue = document.getElementById('heightValue').value;
+    const heightUnit = document.getElementById('heightUnit').value.toLowerCase();
+
+    switch(heightType) {
+        case 'auto':
+            appState.selectedElement.style.height = 'auto';
+            appState.selectedElement.style.minHeight = '';
+            break;
+        case 'min':
+            appState.selectedElement.style.height = 'auto';
+            appState.selectedElement.style.minHeight = heightValue + heightUnit;
+            break;
+        case 'fixed':
+            appState.selectedElement.style.height = heightValue + heightUnit;
+            appState.selectedElement.style.minHeight = '';
+            break;
+    }
+}
+
+function applyFlexStyles() {
+    const flexDirection = document.getElementById('flexDirection').value;
+    const flexJustify = document.getElementById('flexJustify').value;
+    const flexAlign = document.getElementById('flexAlign').value;
+    const flexWrap = document.getElementById('flexWrap').value;
+    const flexGap = document.getElementById('flexGap').value;
+    const flexGapUnit = document.getElementById('flexGapUnit').value.toLowerCase();
+
+    if (appState.selectedElement) {
+        appState.selectedElement.style.flexDirection = flexDirection;
+        appState.selectedElement.style.justifyContent = flexJustify;
+        appState.selectedElement.style.alignItems = flexAlign;
+        appState.selectedElement.style.flexWrap = flexWrap;
+        appState.selectedElement.style.gap = flexGap + flexGapUnit;
+    }
+}
+
+function applyGridStyles() {
+    const gridColumns = document.getElementById('gridColumns').value;
+    const gridRows = document.getElementById('gridRows').value;
+    const gridGap = document.getElementById('gridGap').value;
+    const gridGapUnit = document.getElementById('gridGapUnit').value.toLowerCase();
+
+    if (appState.selectedElement) {
+        appState.selectedElement.style.gridTemplateColumns = gridColumns;
+        appState.selectedElement.style.gridTemplateRows = gridRows;
+        appState.selectedElement.style.gap = gridGap + gridGapUnit;
+    }
 }
 
 console.log('FIFI Page Builder initialisé avec succès!');

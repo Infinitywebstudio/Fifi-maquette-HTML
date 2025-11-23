@@ -411,6 +411,180 @@
 
             <!-- Contenu Layer Style -->
             <div class="properties-container layer-style-content">
+                <!-- Section Width -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Width</span>
+                    </div>
+                    <div class="width-controls">
+                        <div class="button-group">
+                            <button class="option-btn active" data-width-type="full">Full Width</button>
+                            <button class="option-btn" data-width-type="boxed">Boxed</button>
+                            <button class="option-btn" data-width-type="custom">Custom</button>
+                        </div>
+                        <div class="custom-width-controls" style="display: none; margin-top: 8px;">
+                            <div class="input-group">
+                                <input type="number" value="100" class="property-input" id="widthValue">
+                                <select class="unit-select" id="widthUnit">
+                                    <option>PX</option>
+                                    <option>%</option>
+                                    <option>VW</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="max-width-controls" style="margin-top: 8px;">
+                            <label style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; display: block;">Max Width</label>
+                            <div class="input-group">
+                                <input type="number" value="" placeholder="None" class="property-input" id="maxWidthValue">
+                                <select class="unit-select" id="maxWidthUnit">
+                                    <option>PX</option>
+                                    <option>%</option>
+                                    <option>VW</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Height -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Height</span>
+                    </div>
+                    <div class="height-controls">
+                        <div class="button-group">
+                            <button class="option-btn active" data-height-type="auto">Auto</button>
+                            <button class="option-btn" data-height-type="min">Min Height</button>
+                            <button class="option-btn" data-height-type="fixed">Fixed</button>
+                        </div>
+                        <div class="height-value-controls" style="display: none; margin-top: 8px;">
+                            <div class="input-group">
+                                <input type="number" value="100" class="property-input" id="heightValue">
+                                <select class="unit-select" id="heightUnit">
+                                    <option>PX</option>
+                                    <option>%</option>
+                                    <option>VH</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Display -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Display</span>
+                    </div>
+                    <div class="display-controls">
+                        <div class="button-group">
+                            <button class="option-btn active" data-display-type="block">Block</button>
+                            <button class="option-btn" data-display-type="flex">Flex</button>
+                            <button class="option-btn" data-display-type="grid">Grid</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Flex Options (visible uniquement si Display = Flex) -->
+                <div class="property-section flex-options" style="display: none;">
+                    <div class="section-header">
+                        <span>Flex Options</span>
+                    </div>
+                    <div class="flex-controls">
+                        <div class="control-group">
+                            <label>Direction</label>
+                            <select class="page-option-select" id="flexDirection">
+                                <option value="row">Row</option>
+                                <option value="column">Column</option>
+                                <option value="row-reverse">Row Reverse</option>
+                                <option value="column-reverse">Column Reverse</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Justify Content</label>
+                            <select class="page-option-select" id="flexJustify">
+                                <option value="flex-start">Flex Start</option>
+                                <option value="center">Center</option>
+                                <option value="flex-end">Flex End</option>
+                                <option value="space-between">Space Between</option>
+                                <option value="space-around">Space Around</option>
+                                <option value="space-evenly">Space Evenly</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Align Items</label>
+                            <select class="page-option-select" id="flexAlign">
+                                <option value="flex-start">Flex Start</option>
+                                <option value="center">Center</option>
+                                <option value="flex-end">Flex End</option>
+                                <option value="stretch">Stretch</option>
+                                <option value="baseline">Baseline</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Wrap</label>
+                            <select class="page-option-select" id="flexWrap">
+                                <option value="nowrap">No Wrap</option>
+                                <option value="wrap">Wrap</option>
+                                <option value="wrap-reverse">Wrap Reverse</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Gap</label>
+                            <div class="input-group">
+                                <input type="number" value="0" class="property-input" id="flexGap">
+                                <select class="unit-select" id="flexGapUnit">
+                                    <option>PX</option>
+                                    <option>%</option>
+                                    <option>REM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Grid Options (visible uniquement si Display = Grid) -->
+                <div class="property-section grid-options" style="display: none;">
+                    <div class="section-header">
+                        <span>Grid Options</span>
+                    </div>
+                    <div class="grid-controls">
+                        <div class="control-group">
+                            <label>Template Columns</label>
+                            <input type="text" value="1fr 1fr" class="page-option-input" id="gridColumns" placeholder="e.g., 1fr 1fr 1fr">
+                        </div>
+                        <div class="control-group">
+                            <label>Template Rows</label>
+                            <input type="text" value="auto" class="page-option-input" id="gridRows" placeholder="e.g., auto auto">
+                        </div>
+                        <div class="control-group">
+                            <label>Gap</label>
+                            <div class="input-group">
+                                <input type="number" value="10" class="property-input" id="gridGap">
+                                <select class="unit-select" id="gridGapUnit">
+                                    <option>PX</option>
+                                    <option>%</option>
+                                    <option>REM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Overflow -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Overflow</span>
+                    </div>
+                    <div class="overflow-controls">
+                        <div class="button-group">
+                            <button class="option-btn active" data-overflow-type="visible">Visible</button>
+                            <button class="option-btn" data-overflow-type="hidden">Hidden</button>
+                            <button class="option-btn" data-overflow-type="scroll">Scroll</button>
+                            <button class="option-btn" data-overflow-type="auto">Auto</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Alignment -->
                 <div class="property-section">
                     <div class="section-header">
