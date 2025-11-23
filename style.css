@@ -1233,8 +1233,8 @@ body {
 }
 
 .spacing-input {
-    width: 36px;
-    height: 26px;
+    width: 44px;
+    height: 28px;
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 4px;
