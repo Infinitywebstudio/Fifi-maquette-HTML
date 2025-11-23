@@ -1125,7 +1125,7 @@ body {
 
 .gap-inputs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
 }
 
@@ -1133,12 +1133,13 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex: 1;
 }
 
 .gap-label {
     font-size: 10px;
     color: var(--text-secondary);
-    min-width: 45px;
+    min-width: 35px;
     text-transform: capitalize;
 }
 
