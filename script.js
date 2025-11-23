@@ -856,14 +856,14 @@ function initializeContainerStyleControls() {
 
             // Show/hide flex and grid options
             if (displayType === 'flex') {
-                flexOptions.style.display = 'block';
-                gridOptions.style.display = 'none';
+                if (flexOptions) flexOptions.style.display = 'block';
+                if (gridOptions) gridOptions.style.display = 'none';
             } else if (displayType === 'grid') {
-                flexOptions.style.display = 'none';
-                gridOptions.style.display = 'block';
+                if (flexOptions) flexOptions.style.display = 'none';
+                if (gridOptions) gridOptions.style.display = 'block';
             } else {
-                flexOptions.style.display = 'none';
-                gridOptions.style.display = 'none';
+                if (flexOptions) flexOptions.style.display = 'none';
+                if (gridOptions) gridOptions.style.display = 'none';
             }
 
             // Apply display to selected element
@@ -1264,18 +1264,19 @@ function initializeBorderControls() {
     const borderStyle = document.getElementById('borderStyle');
     const borderColorText = document.getElementById('borderColorText');
     const borderColorPreview = document.getElementById('borderColorPreview');
-
     const borderColorPicker = document.getElementById('borderColorPicker');
 
     // Sync color picker with text input and preview
-    borderColorPicker.addEventListener('input', (e) => {
-        const color = e.target.value;
-        borderColorText.value = color;
-        borderColorPreview.style.backgroundColor = color;
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
+    if (borderColorPicker && borderColorText && borderColorPreview) {
+        borderColorPicker.addEventListener('input', (e) => {
+            const color = e.target.value;
+            borderColorText.value = color;
+            borderColorPreview.style.backgroundColor = color;
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    }
 
     // Tab switching for Border (Style/Radius)
     const borderTabs = document.querySelectorAll('.spacing-tab[data-border]');
@@ -1333,33 +1334,42 @@ function initializeBorderControls() {
     }
 
     // Border style
-    borderStyle.addEventListener('change', () => {
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
+    if (borderStyle) {
+        borderStyle.addEventListener('change', () => {
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    }
+
     // Border color input - update preview rectangle and color picker
-    borderColorText.addEventListener('input', (e) => {
-        const color = e.target.value;
-        borderColorPreview.style.backgroundColor = color;
-        if (/^#[0-9A-F]{6}$/i.test(color)) {
-            borderColorPicker.value = color;
-        }
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
+    if (borderColorText) {
+        borderColorText.addEventListener('input', (e) => {
+            const color = e.target.value;
+            if (borderColorPreview) {
+                borderColorPreview.style.backgroundColor = color;
+            }
+            if (/^#[0-9A-F]{6}$/i.test(color) && borderColorPicker) {
+                borderColorPicker.value = color;
+            }
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    }
 
     // Border opacity slider
     const borderOpacity = document.getElementById('borderOpacity');
     const borderOpacityValue = document.getElementById('borderOpacityValue');
 
-    borderOpacity.addEventListener('input', (e) => {
-        borderOpacityValue.textContent = e.target.value + '%';
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
+    if (borderOpacity && borderOpacityValue) {
+        borderOpacity.addEventListener('input', (e) => {
+            borderOpacityValue.textContent = e.target.value + '%';
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    }
 
     // Border width inputs
     const borderWidthInputs = document.querySelectorAll('.border-width-input');
