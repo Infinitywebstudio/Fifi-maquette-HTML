@@ -1270,7 +1270,7 @@ body {
 
 /* Positioning for each side */
 .spacing-top {
-    top: 3px;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -1282,7 +1282,7 @@ body {
 }
 
 .spacing-bottom {
-    bottom: 3px;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
 }

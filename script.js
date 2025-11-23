@@ -1153,33 +1153,45 @@ function initializeSpacingControls() {
         }
     });
 
-    // Horizontal drag to adjust values
+    // Horizontal drag to adjust values (like Figma)
     const allSpacingInputs = document.querySelectorAll('.spacing-input');
     allSpacingInputs.forEach(input => {
         let isDragging = false;
+        let dragStarted = false;
         let startX = 0;
         let startValue = 0;
 
         input.addEventListener('mousedown', (e) => {
             isDragging = true;
+            dragStarted = false;
             startX = e.clientX;
             startValue = parseInt(input.value) || 0;
-            e.preventDefault();
         });
 
         document.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
 
-            const deltaX = e.clientX - startX;
-            const newValue = Math.max(0, startValue + Math.round(deltaX / 2));
-            input.value = newValue;
+            const deltaX = Math.abs(e.clientX - startX);
 
-            // Trigger input event to apply changes
-            input.dispatchEvent(new Event('input', { bubbles: true }));
+            // Only start dragging if moved more than 3px (otherwise allow normal input)
+            if (deltaX > 3 && !dragStarted) {
+                dragStarted = true;
+                input.blur(); // Remove focus to prevent typing while dragging
+            }
+
+            if (dragStarted) {
+                const movement = e.clientX - startX;
+                const newValue = Math.max(0, startValue + Math.round(movement / 2));
+                input.value = newValue;
+
+                // Trigger input event to apply changes
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
         });
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
+            dragStarted = false;
         });
     });
 }
