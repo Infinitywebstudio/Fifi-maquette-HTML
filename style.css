@@ -1465,12 +1465,6 @@ body {
     border-radius: 2px;
 }
 
-/* Spacing center box */
-.spacing-center-box {
-    fill: #2a2a2a;
-    stroke: #444;
-}
-
 /* Responsive */
 @media (max-width: 1400px) {
     .left-panel {
@@ -1486,21 +1480,4 @@ body {
     .elements-grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* Hide color picker extension images (ColorPick Eyedropper, etc.) */
-.colorpick-eyedropper-input-trigger,
-img.colorpick-eyedropper-input-trigger,
-img[src*="chrome-extension"],
-img[src*="colorpick"],
-input[type="color"] ~ img,
-input[type="color"] + img,
-#borderColorPicker ~ img,
-#borderColorPicker + img {
-    display: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    position: absolute !important;
-    left: -9999px !important;
 }

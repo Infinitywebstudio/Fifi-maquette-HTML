@@ -667,6 +667,21 @@
                     </div>
                 </div>
 
+                <!-- Section Overflow -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Overflow</span>
+                    </div>
+                    <div class="overflow-controls">
+                        <div class="button-group">
+                            <button class="option-btn active" data-overflow-type="visible">Visible</button>
+                            <button class="option-btn" data-overflow-type="hidden">Hidden</button>
+                            <button class="option-btn" data-overflow-type="scroll">Scroll</button>
+                            <button class="option-btn" data-overflow-type="auto">Auto</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Spacing -->
                 <div class="property-section">
                     <div class="section-header">
@@ -687,15 +702,15 @@
 
                         <!-- Margin control (visible by default) -->
                         <div class="spacing-input-wrapper" id="marginControl">
-                            <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100" id="marginSvg">
+                            <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
                                 <!-- Connection lines -->
-                                <line class="spacing-line" x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
 
                                 <!-- Center box -->
-                                <rect class="spacing-center-box" x="92" y="42" width="16" height="16" stroke-width="1" rx="2"/>
+                                <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                             </svg>
 
                             <!-- Input fields positioned absolutely -->
@@ -721,15 +736,15 @@
 
                         <!-- Padding control (hidden by default) -->
                         <div class="spacing-input-wrapper" id="paddingControl" style="display: none;">
-                            <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100" id="paddingSvg">
+                            <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
                                 <!-- Connection lines -->
-                                <line class="spacing-line" x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                <line class="spacing-line" x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
 
                                 <!-- Center box -->
-                                <rect class="spacing-center-box" x="92" y="42" width="16" height="16" stroke-width="1" rx="2"/>
+                                <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                             </svg>
 
                             <!-- Input fields positioned absolutely -->
@@ -751,6 +766,17 @@
                                     <input type="number" value="0" class="spacing-input" id="paddingLeft" placeholder="0">
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Unit selector -->
+                        <div class="spacing-unit">
+                            <label>Unit</label>
+                            <select class="unit-select" id="spacingUnit">
+                                <option>PX</option>
+                                <option>%</option>
+                                <option>REM</option>
+                                <option>EM</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -791,35 +817,32 @@
                             <div style="margin-bottom: 12px;">
                                 <label style="display: block; margin: 0 0 6px 0; font-size: 11px;">Color</label>
 
-                                <div style="display: grid; grid-template-columns: 28px 60px 1fr; gap: 5px; align-items: center; min-width: 0; height: 30px;">
-                                    <!-- Color preview circle with hidden color picker -->
-                                    <div style="position: relative; width: 28px; height: 28px;">
-                                        <div id="borderColorPreview" style="width: 100%; height: 100%; border-radius: 50%; border: 1px solid var(--border-color); background-color: #000000; cursor: pointer;"></div>
-                                        <input type="color" value="#000000" id="borderColorPicker" style="position: absolute; opacity: 0; width: 100%; height: 100%; top: 0; left: 0; cursor: pointer;">
-                                    </div>
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <!-- Color preview rectangle -->
+                                    <div id="borderColorPreview" style="width: 18px; height: 18px; border-radius: 3px; border: 1px solid var(--border-color); background-color: #000000; flex-shrink: 0;"></div>
 
-                                    <!-- Hex color input - controlled width with white text -->
-                                    <input type="text" value="#000000" id="borderColorText" placeholder="#000000" maxlength="7" style="width: 100%; height: 100%; margin: 0; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 4px; font-size: 10px; font-family: monospace; text-align: center; color: var(--text-primary); box-sizing: border-box;">
+                                    <!-- Hex color input -->
+                                    <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0; flex: 0 0 60px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 4px; font-size: 10px;">
 
-                                    <!-- Opacity slider - takes remaining space without overflow -->
-                                    <div style="display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 7px; gap: 3px; min-width: 0; overflow: hidden; height: 100%; box-sizing: border-box;">
+                                    <!-- Opacity slider -->
+                                    <div style="flex: 1; display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 7px; gap: 5px; min-width: 0;">
                                         <input type="range" min="0" max="100" value="100" class="opacity-slider" id="borderOpacity" style="flex: 1; margin: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, transparent, var(--text-primary)); -webkit-appearance: none; appearance: none; cursor: pointer; min-width: 0;">
-                                        <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); width: 32px; text-align: right; flex-shrink: 0;">100%</span>
+                                        <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); min-width: 26px; text-align: right;">100%</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Border Width with visual control -->
                             <div class="spacing-input-wrapper">
-                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100" id="borderWidthSvg">
+                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
                                     <!-- Connection lines -->
-                                    <line class="spacing-line" x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
 
                                     <!-- Center box -->
-                                    <rect class="spacing-center-box" x="92" y="42" width="16" height="16" stroke-width="1" rx="2"/>
+                                    <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                                 </svg>
 
                                 <!-- Input fields positioned absolutely -->
@@ -847,15 +870,15 @@
                         <!-- Radius control (hidden by default) -->
                         <div class="border-radius-wrapper" id="borderRadiusControl" style="display: none;">
                             <div class="spacing-input-wrapper">
-                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100" id="borderRadiusSvg">
+                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
                                     <!-- Connection lines -->
-                                    <line class="spacing-line" x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line class="spacing-line" x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
 
                                     <!-- Center box -->
-                                    <rect class="spacing-center-box" x="92" y="42" width="16" height="16" stroke-width="1" rx="2"/>
+                                    <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                                 </svg>
 
                                 <!-- Input fields positioned absolutely -->
@@ -882,17 +905,61 @@
                     </div>
                 </div>
 
-                <!-- Section Overflow -->
+                <!-- Section Alignment -->
                 <div class="property-section">
                     <div class="section-header">
-                        <span>Overflow</span>
+                        <span>Align</span>
                     </div>
-                    <div class="overflow-controls">
-                        <div class="button-group">
-                            <button class="option-btn active" data-overflow-type="visible">Visible</button>
-                            <button class="option-btn" data-overflow-type="hidden">Hidden</button>
-                            <button class="option-btn" data-overflow-type="scroll">Scroll</button>
-                            <button class="option-btn" data-overflow-type="auto">Auto</button>
+                    <div class="align-controls">
+                        <button class="align-btn" title="Align Left">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="17" y1="10" x2="3" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="17" y1="18" x2="3" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Align Center">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="10" x2="6" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="18" y1="18" x2="6" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Align Right">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="21" y1="10" x2="7" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="21" y1="18" x2="7" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Justify">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="21" y1="10" x2="3" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="21" y1="18" x2="3" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section Fill -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Fill</span>
+                    </div>
+                    <div class="color-controls">
+                        <div class="color-picker-wrapper">
+                            <input type="color" value="#FFFFFF" class="color-input" id="fillColor">
+                            <input type="text" value="#FFFFFF" class="color-text">
+                        </div>
+                        <div class="opacity-control">
+                            <label>Opacity</label>
+                            <input type="range" min="0" max="100" value="100" class="opacity-slider">
+                            <span class="opacity-value">100%</span>
                         </div>
                     </div>
                 </div>
