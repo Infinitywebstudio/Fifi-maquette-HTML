@@ -1152,6 +1152,36 @@ function initializeSpacingControls() {
             applySpacing(spacing);
         }
     });
+
+    // Horizontal drag to adjust values
+    const allSpacingInputs = document.querySelectorAll('.spacing-input');
+    allSpacingInputs.forEach(input => {
+        let isDragging = false;
+        let startX = 0;
+        let startValue = 0;
+
+        input.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startValue = parseInt(input.value) || 0;
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            const deltaX = e.clientX - startX;
+            const newValue = Math.max(0, startValue + Math.round(deltaX / 2));
+            input.value = newValue;
+
+            // Trigger input event to apply changes
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    });
 }
 
 function applySpacing(type) {

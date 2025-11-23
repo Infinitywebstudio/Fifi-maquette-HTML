@@ -1265,30 +1265,31 @@ body {
 
 .spacing-input:hover {
     border-color: var(--text-secondary);
+    cursor: ew-resize;
 }
 
 /* Positioning for each side */
 .spacing-top {
-    top: 0px;
+    top: 3px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .spacing-right {
     top: 50%;
-    right: 0px;
+    right: 3px;
     transform: translateY(-50%);
 }
 
 .spacing-bottom {
-    bottom: 0px;
+    bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .spacing-left {
     top: 50%;
-    left: 0px;
+    left: 3px;
     transform: translateY(-50%);
 }
 
