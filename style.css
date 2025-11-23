@@ -1057,7 +1057,8 @@ body {
     background-color: transparent;
     border: none;
     color: var(--text-secondary);
-    width: 32px;
+    flex: 1;
+    min-width: 32px;
     height: 28px;
     border-radius: 4px;
     cursor: pointer;
