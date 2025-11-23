@@ -1274,6 +1274,17 @@ function initializeBorderControls() {
         }
     });
 
+    // Border opacity slider
+    const borderOpacity = document.getElementById('borderOpacity');
+    const borderOpacityValue = document.getElementById('borderOpacityValue');
+
+    borderOpacity.addEventListener('input', (e) => {
+        borderOpacityValue.textContent = e.target.value + '%';
+        if (appState.selectedElement) {
+            applyBorder();
+        }
+    });
+
     // Border width inputs
     const borderWidthInputs = document.querySelectorAll('.border-width-input');
     borderWidthInputs.forEach(input => {
@@ -1345,6 +1356,7 @@ function applyBorder() {
 
     const style = document.getElementById('borderStyle').value;
     const color = document.getElementById('borderColorText').value;
+    const opacity = document.getElementById('borderOpacity').value / 100;
 
     const widthTop = document.getElementById('borderWidthTop').value || 0;
     const widthRight = document.getElementById('borderWidthRight').value || 0;
@@ -1365,14 +1377,28 @@ function applyBorder() {
     // Apply border style
     appState.selectedElement.style.borderStyle = style;
 
-    // Apply border color
-    appState.selectedElement.style.borderColor = color;
+    // Apply border color with opacity
+    const colorWithOpacity = hexToRgba(color, opacity);
+    appState.selectedElement.style.borderColor = colorWithOpacity;
 
     // Apply border radius
     appState.selectedElement.style.borderTopLeftRadius = radiusTop + 'px';
     appState.selectedElement.style.borderTopRightRadius = radiusRight + 'px';
     appState.selectedElement.style.borderBottomRightRadius = radiusBottom + 'px';
     appState.selectedElement.style.borderBottomLeftRadius = radiusLeft + 'px';
+}
+
+// Helper function to convert hex to rgba
+function hexToRgba(hex, alpha) {
+    // Remove # if present
+    hex = hex.replace('#', '');
+
+    // Parse hex values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
 console.log('FIFI Page Builder initialisé avec succès!');

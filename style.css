@@ -1432,6 +1432,39 @@ body {
     outline-offset: -10px;
 }
 
+/* Opacity slider styling */
+.opacity-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    cursor: pointer;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.opacity-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    cursor: pointer;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.opacity-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+}
+
+.opacity-slider::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+}
+
 /* Responsive */
 @media (max-width: 1400px) {
     .left-panel {
