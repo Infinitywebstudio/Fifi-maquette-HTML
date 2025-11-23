@@ -1228,8 +1228,28 @@ function applySpacing(type) {
 
 function initializeBorderControls() {
     const borderStyle = document.getElementById('borderStyle');
-    const borderColor = document.getElementById('borderColor');
     const borderColorText = document.getElementById('borderColorText');
+
+    // Tab switching for Border (Style/Radius)
+    const borderTabs = document.querySelectorAll('.spacing-tab[data-border]');
+    const borderStyleControl = document.getElementById('borderStyleControl');
+    const borderRadiusControl = document.getElementById('borderRadiusControl');
+
+    borderTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            borderTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const border = tab.dataset.border;
+            if (border === 'style') {
+                borderStyleControl.style.display = 'block';
+                borderRadiusControl.style.display = 'none';
+            } else if (border === 'radius') {
+                borderStyleControl.style.display = 'none';
+                borderRadiusControl.style.display = 'block';
+            }
+        });
+    });
 
     // Border style
     borderStyle.addEventListener('change', () => {
@@ -1238,19 +1258,8 @@ function initializeBorderControls() {
         }
     });
 
-    // Border color
-    borderColor.addEventListener('input', (e) => {
-        borderColorText.value = e.target.value;
-        if (appState.selectedElement) {
-            applyBorder();
-        }
-    });
 
     borderColorText.addEventListener('input', (e) => {
-        borderColor.value = e.target.value;
-        if (appState.selectedElement) {
-            applyBorder();
-        }
     });
 
     // Border width inputs
@@ -1263,14 +1272,20 @@ function initializeBorderControls() {
         });
     });
 
-    // Border radius inputs
-    const borderRadiusInputs = document.querySelectorAll('.border-radius-input');
-    borderRadiusInputs.forEach(input => {
-        input.addEventListener('input', () => {
-            if (appState.selectedElement) {
-                applyBorder();
-            }
-        });
+    // Border radius inputs (by ID since they now use spacing-input class)
+    const borderRadiusTop = document.getElementById('borderRadiusTop');
+    const borderRadiusRight = document.getElementById('borderRadiusRight');
+    const borderRadiusBottom = document.getElementById('borderRadiusBottom');
+    const borderRadiusLeft = document.getElementById('borderRadiusLeft');
+    
+    [borderRadiusTop, borderRadiusRight, borderRadiusBottom, borderRadiusLeft].forEach(input => {
+        if (input) {
+            input.addEventListener('input', () => {
+                if (appState.selectedElement) {
+                    applyBorder();
+                }
+            });
+        }
     });
 
     // Add horizontal drag to border inputs
@@ -1317,17 +1332,17 @@ function applyBorder() {
     if (!appState.selectedElement) return;
 
     const style = document.getElementById('borderStyle').value;
-    const color = document.getElementById('borderColor').value;
+    const color = document.getElementById('borderColorText').value;
 
     const widthTop = document.getElementById('borderWidthTop').value || 0;
     const widthRight = document.getElementById('borderWidthRight').value || 0;
     const widthBottom = document.getElementById('borderWidthBottom').value || 0;
     const widthLeft = document.getElementById('borderWidthLeft').value || 0;
 
-    const radiusTopLeft = document.getElementById('borderRadiusTopLeft').value || 0;
-    const radiusTopRight = document.getElementById('borderRadiusTopRight').value || 0;
-    const radiusBottomRight = document.getElementById('borderRadiusBottomRight').value || 0;
-    const radiusBottomLeft = document.getElementById('borderRadiusBottomLeft').value || 0;
+    const radiusTop = document.getElementById('borderRadiusTop').value || 0;
+    const radiusRight = document.getElementById('borderRadiusRight').value || 0;
+    const radiusBottom = document.getElementById('borderRadiusBottom').value || 0;
+    const radiusLeft = document.getElementById('borderRadiusLeft').value || 0;
 
     // Apply border width
     appState.selectedElement.style.borderTopWidth = widthTop + 'px';
@@ -1342,10 +1357,10 @@ function applyBorder() {
     appState.selectedElement.style.borderColor = color;
 
     // Apply border radius
-    appState.selectedElement.style.borderTopLeftRadius = radiusTopLeft + 'px';
-    appState.selectedElement.style.borderTopRightRadius = radiusTopRight + 'px';
-    appState.selectedElement.style.borderBottomRightRadius = radiusBottomRight + 'px';
-    appState.selectedElement.style.borderBottomLeftRadius = radiusBottomLeft + 'px';
+    appState.selectedElement.style.borderTopLeftRadius = radiusTop + 'px';
+    appState.selectedElement.style.borderTopRightRadius = radiusRight + 'px';
+    appState.selectedElement.style.borderBottomRightRadius = radiusBottom + 'px';
+    appState.selectedElement.style.borderBottomLeftRadius = radiusLeft + 'px';
 }
 
 console.log('FIFI Page Builder initialisé avec succès!');

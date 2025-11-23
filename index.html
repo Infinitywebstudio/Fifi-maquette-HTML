@@ -426,6 +426,50 @@
                     </div>
                 </div>
 
+                <!-- Section Dimension -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Dimension</span>
+                    </div>
+                    <div class="dimension-controls">
+                        <div class="control-group">
+                            <label>Width</label>
+                            <div class="button-group">
+                                <button class="option-btn active" data-width-type="full">Full</button>
+                                <button class="option-btn" data-width-type="auto">Auto</button>
+                                <button class="option-btn" data-width-type="custom">Custom</button>
+                            </div>
+                            <div class="custom-width-controls" style="display: none; margin-top: 8px;">
+                                <div class="input-group">
+                                    <input type="number" value="100" class="property-input" id="widthValue">
+                                    <select class="unit-select" id="widthUnit">
+                                        <option>PX</option>
+                                        <option>%</option>
+                                        <option>VW</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Height</label>
+                            <div class="button-group">
+                                <button class="option-btn active" data-height-type="auto">Auto</button>
+                                <button class="option-btn" data-height-type="custom">Custom</button>
+                            </div>
+                            <div class="custom-height-controls" style="display: none; margin-top: 8px;">
+                                <div class="input-group">
+                                    <input type="number" value="100" class="property-input" id="heightValue">
+                                    <select class="unit-select" id="heightUnit">
+                                        <option>PX</option>
+                                        <option>%</option>
+                                        <option>VH</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Flex Options (visible uniquement si Display = Flex) -->
                 <div class="property-section flex-options" style="display: none;">
                     <div class="section-header">
@@ -638,50 +682,6 @@
                     </div>
                 </div>
 
-                <!-- Section Dimension -->
-                <div class="property-section">
-                    <div class="section-header">
-                        <span>Dimension</span>
-                    </div>
-                    <div class="dimension-controls">
-                        <div class="control-group">
-                            <label>Width</label>
-                            <div class="button-group">
-                                <button class="option-btn active" data-width-type="full">Full</button>
-                                <button class="option-btn" data-width-type="auto">Auto</button>
-                                <button class="option-btn" data-width-type="custom">Custom</button>
-                            </div>
-                            <div class="custom-width-controls" style="display: none; margin-top: 8px;">
-                                <div class="input-group">
-                                    <input type="number" value="100" class="property-input" id="widthValue">
-                                    <select class="unit-select" id="widthUnit">
-                                        <option>PX</option>
-                                        <option>%</option>
-                                        <option>VW</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label>Height</label>
-                            <div class="button-group">
-                                <button class="option-btn active" data-height-type="auto">Auto</button>
-                                <button class="option-btn" data-height-type="custom">Custom</button>
-                            </div>
-                            <div class="custom-height-controls" style="display: none; margin-top: 8px;">
-                                <div class="input-group">
-                                    <input type="number" value="100" class="property-input" id="heightValue">
-                                    <select class="unit-select" id="heightUnit">
-                                        <option>PX</option>
-                                        <option>%</option>
-                                        <option>VH</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Section Spacing -->
                 <div class="property-section">
                     <div class="section-header">
@@ -785,23 +785,38 @@
                 <div class="property-section">
                     <div class="section-header">
                         <span>Border</span>
+                        <select class="unit-select-inline" id="borderUnit">
+                            <option>PX</option>
+                            <option>%</option>
+                            <option>REM</option>
+                            <option>EM</option>
+                        </select>
                     </div>
                     <div class="border-controls">
-                        <!-- Border Style -->
-                        <div class="control-group">
-                            <label>Style</label>
-                            <select class="page-option-select" id="borderStyle">
-                                <option value="none">None</option>
-                                <option value="solid">Solid</option>
-                                <option value="dashed">Dashed</option>
-                                <option value="dotted">Dotted</option>
-                                <option value="double">Double</option>
-                            </select>
+                        <!-- Tab buttons -->
+                        <div class="spacing-tabs">
+                            <button class="spacing-tab active" data-border="style">Style</button>
+                            <button class="spacing-tab" data-border="radius">Radius</button>
                         </div>
 
-                        <!-- Border Width with visual control -->
-                        <div class="control-group">
-                            <label>Width (px)</label>
+                        <!-- Style control (visible by default) -->
+                        <div class="border-style-wrapper" id="borderStyleControl">
+                            <!-- Type and Color on same line -->
+                            <div style="display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 8px 12px; align-items: center; margin-bottom: 12px;">
+                                <label style="margin: 0;">Type</label>
+                                <select class="page-option-select" id="borderStyle" style="margin: 0;">
+                                    <option value="none">None</option>
+                                    <option value="solid">Solid</option>
+                                    <option value="dashed">Dashed</option>
+                                    <option value="dotted">Dotted</option>
+                                    <option value="double">Double</option>
+                                </select>
+
+                                <label style="margin: 0;">Color</label>
+                                <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0;">
+                            </div>
+
+                            <!-- Border Width with visual control -->
                             <div class="spacing-input-wrapper">
                                 <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
                                     <!-- Connection lines -->
@@ -814,61 +829,59 @@
                                     <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                                 </svg>
 
-                                <!-- Input fields -->
+                                <!-- Input fields positioned absolutely -->
                                 <div class="spacing-inputs">
                                     <div class="spacing-input-field spacing-top">
-                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthTop" placeholder="T">
+                                        <span class="spacing-label">T</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderWidthTop" placeholder="0">
                                     </div>
                                     <div class="spacing-input-field spacing-right">
-                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthRight" placeholder="R">
+                                        <span class="spacing-label">R</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderWidthRight" placeholder="0">
                                     </div>
                                     <div class="spacing-input-field spacing-bottom">
-                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthBottom" placeholder="B">
+                                        <span class="spacing-label">B</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderWidthBottom" placeholder="0">
                                     </div>
                                     <div class="spacing-input-field spacing-left">
-                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthLeft" placeholder="L">
+                                        <span class="spacing-label">L</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderWidthLeft" placeholder="0">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Border Color -->
-                        <div class="control-group">
-                            <label>Color</label>
-                            <div class="input-group">
-                                <input type="color" value="#000000" class="color-input" id="borderColor">
-                                <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000">
-                            </div>
-                        </div>
-
-                        <!-- Border Radius with visual control -->
-                        <div class="control-group">
-                            <label>Radius (px)</label>
+                        <!-- Radius control (hidden by default) -->
+                        <div class="border-radius-wrapper" id="borderRadiusControl" style="display: none;">
                             <div class="spacing-input-wrapper">
                                 <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
-                                    <!-- Connection lines to corners -->
-                                    <line x1="75" y1="25" x2="90" y2="40" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line x1="125" y1="25" x2="110" y2="40" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line x1="125" y1="75" x2="110" y2="60" stroke="#555" stroke-width="1" opacity="0.3"/>
-                                    <line x1="75" y1="75" x2="90" y2="60" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <!-- Connection lines -->
+                                    <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
 
-                                    <!-- Center box with rounded corners -->
-                                    <rect x="90" y="40" width="20" height="20" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="4"/>
+                                    <!-- Center box -->
+                                    <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
                                 </svg>
 
-                                <!-- Input fields for corners -->
+                                <!-- Input fields positioned absolutely -->
                                 <div class="spacing-inputs">
-                                    <div class="spacing-input-field" style="top: 8px; left: 20%;">
-                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusTopLeft" placeholder="TL">
+                                    <div class="spacing-input-field spacing-top">
+                                        <span class="spacing-label">T</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderRadiusTop" placeholder="0">
                                     </div>
-                                    <div class="spacing-input-field" style="top: 8px; right: 20%;">
-                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusTopRight" placeholder="TR">
+                                    <div class="spacing-input-field spacing-right">
+                                        <span class="spacing-label">R</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderRadiusRight" placeholder="0">
                                     </div>
-                                    <div class="spacing-input-field" style="bottom: 8px; right: 20%;">
-                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusBottomRight" placeholder="BR">
+                                    <div class="spacing-input-field spacing-bottom">
+                                        <span class="spacing-label">B</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderRadiusBottom" placeholder="0">
                                     </div>
-                                    <div class="spacing-input-field" style="bottom: 8px; left: 20%;">
-                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusBottomLeft" placeholder="BL">
+                                    <div class="spacing-input-field spacing-left">
+                                        <span class="spacing-label">L</span>
+                                        <input type="number" value="0" class="spacing-input" id="borderRadiusLeft" placeholder="0">
                                     </div>
                                 </div>
                             </div>
