@@ -131,6 +131,11 @@ body {
     transform: scale(0.95);
 }
 
+.toolbar-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
 .toolbar-btn.preview-btn {
     border-radius: 50%;
     width: 36px;

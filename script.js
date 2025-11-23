@@ -3,7 +3,7 @@ const appState = {
     selectedElement: null,
     zoomLevel: 100,
     elements: [],
-    currentView: 'default' // default = desktop 16:9 sans data-view
+    currentView: 'desktop' // Par défaut sur vue PC
 };
 
 // Initialisation de l'application
@@ -506,26 +506,37 @@ function handleZoom(action) {
 function handleViewChange(view) {
     const canvas = document.querySelector('.canvas');
     const canvasArea = document.querySelector('.canvas-area');
+    const viewButtons = document.querySelectorAll('.toolbar-btn[data-view]');
 
     if (view.includes('Desktop')) {
         appState.currentView = 'desktop';
         canvas.setAttribute('data-view', 'desktop');
         canvasArea.classList.remove('tablet-view', 'mobile-view');
         updateCanvasSize();
+
+        // Update active button
+        viewButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-view="desktop"]').classList.add('active');
     } else if (view.includes('Tablet')) {
         appState.currentView = 'tablet';
         canvas.setAttribute('data-view', 'tablet');
         canvasArea.classList.remove('mobile-view');
         canvasArea.classList.add('tablet-view');
-        // Réinitialiser le maxWidth pour tablet
         canvas.style.maxWidth = '';
+
+        // Update active button
+        viewButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-view="tablet"]').classList.add('active');
     } else if (view.includes('Mobile')) {
         appState.currentView = 'mobile';
         canvas.setAttribute('data-view', 'mobile');
         canvasArea.classList.remove('tablet-view');
         canvasArea.classList.add('mobile-view');
-        // Réinitialiser le maxWidth pour mobile
         canvas.style.maxWidth = '';
+
+        // Update active button
+        viewButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-view="mobile"]').classList.add('active');
     }
 
     console.log('Vue changée:', view);
