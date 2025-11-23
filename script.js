@@ -1231,6 +1231,18 @@ function initializeBorderControls() {
     const borderColorText = document.getElementById('borderColorText');
     const borderColorPreview = document.getElementById('borderColorPreview');
 
+    const borderColorPicker = document.getElementById('borderColorPicker');
+
+    // Sync color picker with text input and preview
+    borderColorPicker.addEventListener('input', (e) => {
+        const color = e.target.value;
+        borderColorText.value = color;
+        borderColorPreview.style.backgroundColor = color;
+        if (appState.selectedElement) {
+            applyBorder();
+        }
+    });
+
     // Tab switching for Border (Style/Radius)
     const borderTabs = document.querySelectorAll('.spacing-tab[data-border]');
     const borderStyleControl = document.getElementById('borderStyleControl');
@@ -1258,11 +1270,13 @@ function initializeBorderControls() {
             applyBorder();
         }
     });
-
-    // Border color input - update preview rectangle
+    // Border color input - update preview rectangle and color picker
     borderColorText.addEventListener('input', (e) => {
         const color = e.target.value;
         borderColorPreview.style.backgroundColor = color;
+        if (/^#[0-9A-F]{6}$/i.test(color)) {
+            borderColorPicker.value = color;
+        }
         if (appState.selectedElement) {
             applyBorder();
         }

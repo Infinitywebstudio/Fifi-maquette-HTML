@@ -817,17 +817,20 @@
                             <div style="margin-bottom: 12px;">
                                 <label style="display: block; margin: 0 0 6px 0; font-size: 11px;">Color</label>
 
-                                <div style="display: flex; align-items: center; gap: 5px;">
-                                    <!-- Color preview rectangle -->
-                                    <div id="borderColorPreview" style="width: 18px; height: 18px; border-radius: 3px; border: 1px solid var(--border-color); background-color: #000000; flex-shrink: 0;"></div>
+                                <div style="display: grid; grid-template-columns: 18px 60px 1fr; gap: 5px; align-items: stretch; min-width: 0; height: 30px;">
+                                    <!-- Color preview rectangle with hidden color picker -->
+                                    <div style="position: relative; width: 18px; height: 100%;">
+                                        <div id="borderColorPreview" style="width: 100%; height: 100%; border-radius: 3px; border: 1px solid var(--border-color); background-color: #000000; cursor: pointer;"></div>
+                                        <input type="color" value="#000000" id="borderColorPicker" style="position: absolute; opacity: 0; width: 100%; height: 100%; top: 0; left: 0; cursor: pointer;">
+                                    </div>
 
-                                    <!-- Hex color input -->
-                                    <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000" style="margin: 0; flex: 0 0 60px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 4px; font-size: 10px;">
+                                    <!-- Hex color input - controlled width with white text -->
+                                    <input type="text" value="#000000" id="borderColorText" placeholder="#000000" maxlength="7" style="width: 100%; height: 100%; margin: 0; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 5px 4px; font-size: 10px; font-family: monospace; text-align: center; color: var(--text-primary); box-sizing: border-box;">
 
-                                    <!-- Opacity slider -->
-                                    <div style="flex: 1; display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 7px; gap: 5px; min-width: 0;">
+                                    <!-- Opacity slider - takes remaining space without overflow -->
+                                    <div style="display: flex; align-items: center; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 7px; gap: 5px; min-width: 0; overflow: hidden; height: 100%; box-sizing: border-box;">
                                         <input type="range" min="0" max="100" value="100" class="opacity-slider" id="borderOpacity" style="flex: 1; margin: 0; height: 4px; border-radius: 2px; background: linear-gradient(to right, transparent, var(--text-primary)); -webkit-appearance: none; appearance: none; cursor: pointer; min-width: 0;">
-                                        <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); min-width: 26px; text-align: right;">100%</span>
+                                        <span class="opacity-value" id="borderOpacityValue" style="font-size: 10px; color: var(--text-secondary); width: 32px; text-align: right; flex-shrink: 0;">100%</span>
                                     </div>
                                 </div>
                             </div>
