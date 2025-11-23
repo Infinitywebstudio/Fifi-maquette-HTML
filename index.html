@@ -767,6 +767,199 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Unit selector -->
+                        <div class="spacing-unit">
+                            <label>Unit</label>
+                            <select class="unit-select" id="spacingUnit">
+                                <option>PX</option>
+                                <option>%</option>
+                                <option>REM</option>
+                                <option>EM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Border -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Border</span>
+                    </div>
+                    <div class="border-controls">
+                        <!-- Border Style -->
+                        <div class="control-group">
+                            <label>Style</label>
+                            <select class="page-option-select" id="borderStyle">
+                                <option value="none">None</option>
+                                <option value="solid">Solid</option>
+                                <option value="dashed">Dashed</option>
+                                <option value="dotted">Dotted</option>
+                                <option value="double">Double</option>
+                            </select>
+                        </div>
+
+                        <!-- Border Width with visual control -->
+                        <div class="control-group">
+                            <label>Width (px)</label>
+                            <div class="spacing-input-wrapper">
+                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
+                                    <!-- Connection lines -->
+                                    <line x1="100" y1="15" x2="100" y2="42" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="135" y1="50" x2="108" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="100" y1="58" x2="100" y2="85" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="65" y1="50" x2="92" y2="50" stroke="#555" stroke-width="1" opacity="0.3"/>
+
+                                    <!-- Center box -->
+                                    <rect x="92" y="42" width="16" height="16" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="2"/>
+                                </svg>
+
+                                <!-- Input fields -->
+                                <div class="spacing-inputs">
+                                    <div class="spacing-input-field spacing-top">
+                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthTop" placeholder="T">
+                                    </div>
+                                    <div class="spacing-input-field spacing-right">
+                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthRight" placeholder="R">
+                                    </div>
+                                    <div class="spacing-input-field spacing-bottom">
+                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthBottom" placeholder="B">
+                                    </div>
+                                    <div class="spacing-input-field spacing-left">
+                                        <input type="number" value="0" class="spacing-input border-width-input" id="borderWidthLeft" placeholder="L">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Border Color -->
+                        <div class="control-group">
+                            <label>Color</label>
+                            <div class="input-group">
+                                <input type="color" value="#000000" class="color-input" id="borderColor">
+                                <input type="text" value="#000000" class="property-input" id="borderColorText" placeholder="#000000">
+                            </div>
+                        </div>
+
+                        <!-- Border Radius with visual control -->
+                        <div class="control-group">
+                            <label>Radius (px)</label>
+                            <div class="spacing-input-wrapper">
+                                <svg class="spacing-visual" width="100%" height="100" viewBox="0 0 200 100">
+                                    <!-- Connection lines to corners -->
+                                    <line x1="75" y1="25" x2="90" y2="40" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="125" y1="25" x2="110" y2="40" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="125" y1="75" x2="110" y2="60" stroke="#555" stroke-width="1" opacity="0.3"/>
+                                    <line x1="75" y1="75" x2="90" y2="60" stroke="#555" stroke-width="1" opacity="0.3"/>
+
+                                    <!-- Center box with rounded corners -->
+                                    <rect x="90" y="40" width="20" height="20" fill="#2a2a2a" stroke="#444" stroke-width="1" rx="4"/>
+                                </svg>
+
+                                <!-- Input fields for corners -->
+                                <div class="spacing-inputs">
+                                    <div class="spacing-input-field" style="top: 8px; left: 20%;">
+                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusTopLeft" placeholder="TL">
+                                    </div>
+                                    <div class="spacing-input-field" style="top: 8px; right: 20%;">
+                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusTopRight" placeholder="TR">
+                                    </div>
+                                    <div class="spacing-input-field" style="bottom: 8px; right: 20%;">
+                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusBottomRight" placeholder="BR">
+                                    </div>
+                                    <div class="spacing-input-field" style="bottom: 8px; left: 20%;">
+                                        <input type="number" value="0" class="spacing-input border-radius-input" id="borderRadiusBottomLeft" placeholder="BL">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Alignment -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Align</span>
+                    </div>
+                    <div class="align-controls">
+                        <button class="align-btn" title="Align Left">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="17" y1="10" x2="3" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="17" y1="18" x2="3" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Align Center">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="10" x2="6" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="18" y1="18" x2="6" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Align Right">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="21" y1="10" x2="7" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="21" y1="18" x2="7" y2="18"/>
+                            </svg>
+                        </button>
+                        <button class="align-btn" title="Justify">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="21" y1="10" x2="3" y2="10"/>
+                                <line x1="21" y1="6" x2="3" y2="6"/>
+                                <line x1="21" y1="14" x2="3" y2="14"/>
+                                <line x1="21" y1="18" x2="3" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section Size -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Size</span>
+                    </div>
+                    <div class="size-controls">
+                        <div class="input-group">
+                            <label>W</label>
+                            <input type="number" value="100" class="property-input">
+                            <select class="unit-select">
+                                <option>PX</option>
+                                <option>%</option>
+                                <option>VW</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>H</label>
+                            <input type="number" value="100" class="property-input">
+                            <select class="unit-select">
+                                <option>PX</option>
+                                <option>%</option>
+                                <option>VH</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Position -->
+                <div class="property-section">
+                    <div class="section-header">
+                        <span>Position</span>
+                    </div>
+                    <div class="position-controls">
+                        <div class="position-grid">
+                            <div class="input-wrapper">
+                                <label>X</label>
+                                <input type="number" value="0" class="property-input-sm">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>Y</label>
+                                <input type="number" value="0" class="property-input-sm">
+                            </div>
+                        </div>
                     </div>
                 </div>
 

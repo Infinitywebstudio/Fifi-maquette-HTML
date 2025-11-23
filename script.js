@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeRightPanelTabs();
     initializeContainerStyleControls();
     initializeSpacingControls();
+    initializeBorderControls();
 });
 
 // ===== SIDEBAR MENU NAVIGATION =====
@@ -1221,6 +1222,130 @@ function applySpacing(type) {
         appState.selectedElement.style.paddingBottom = bottom + unit;
         appState.selectedElement.style.paddingLeft = left + unit;
     }
+}
+
+// ===== BORDER CONTROLS =====
+
+function initializeBorderControls() {
+    const borderStyle = document.getElementById('borderStyle');
+    const borderColor = document.getElementById('borderColor');
+    const borderColorText = document.getElementById('borderColorText');
+
+    // Border style
+    borderStyle.addEventListener('change', () => {
+        if (appState.selectedElement) {
+            applyBorder();
+        }
+    });
+
+    // Border color
+    borderColor.addEventListener('input', (e) => {
+        borderColorText.value = e.target.value;
+        if (appState.selectedElement) {
+            applyBorder();
+        }
+    });
+
+    borderColorText.addEventListener('input', (e) => {
+        borderColor.value = e.target.value;
+        if (appState.selectedElement) {
+            applyBorder();
+        }
+    });
+
+    // Border width inputs
+    const borderWidthInputs = document.querySelectorAll('.border-width-input');
+    borderWidthInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    });
+
+    // Border radius inputs
+    const borderRadiusInputs = document.querySelectorAll('.border-radius-input');
+    borderRadiusInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            if (appState.selectedElement) {
+                applyBorder();
+            }
+        });
+    });
+
+    // Add horizontal drag to border inputs
+    const allBorderInputs = document.querySelectorAll('.border-width-input, .border-radius-input');
+    allBorderInputs.forEach(input => {
+        let isDragging = false;
+        let dragStarted = false;
+        let startX = 0;
+        let startValue = 0;
+
+        input.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStarted = false;
+            startX = e.clientX;
+            startValue = parseInt(input.value) || 0;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            const deltaX = Math.abs(e.clientX - startX);
+
+            if (deltaX > 3 && !dragStarted) {
+                dragStarted = true;
+                input.blur();
+            }
+
+            if (dragStarted) {
+                const movement = e.clientX - startX;
+                const newValue = Math.max(0, startValue + Math.round(movement / 2));
+                input.value = newValue;
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            dragStarted = false;
+        });
+    });
+}
+
+function applyBorder() {
+    if (!appState.selectedElement) return;
+
+    const style = document.getElementById('borderStyle').value;
+    const color = document.getElementById('borderColor').value;
+
+    const widthTop = document.getElementById('borderWidthTop').value || 0;
+    const widthRight = document.getElementById('borderWidthRight').value || 0;
+    const widthBottom = document.getElementById('borderWidthBottom').value || 0;
+    const widthLeft = document.getElementById('borderWidthLeft').value || 0;
+
+    const radiusTopLeft = document.getElementById('borderRadiusTopLeft').value || 0;
+    const radiusTopRight = document.getElementById('borderRadiusTopRight').value || 0;
+    const radiusBottomRight = document.getElementById('borderRadiusBottomRight').value || 0;
+    const radiusBottomLeft = document.getElementById('borderRadiusBottomLeft').value || 0;
+
+    // Apply border width
+    appState.selectedElement.style.borderTopWidth = widthTop + 'px';
+    appState.selectedElement.style.borderRightWidth = widthRight + 'px';
+    appState.selectedElement.style.borderBottomWidth = widthBottom + 'px';
+    appState.selectedElement.style.borderLeftWidth = widthLeft + 'px';
+
+    // Apply border style
+    appState.selectedElement.style.borderStyle = style;
+
+    // Apply border color
+    appState.selectedElement.style.borderColor = color;
+
+    // Apply border radius
+    appState.selectedElement.style.borderTopLeftRadius = radiusTopLeft + 'px';
+    appState.selectedElement.style.borderTopRightRadius = radiusTopRight + 'px';
+    appState.selectedElement.style.borderBottomRightRadius = radiusBottomRight + 'px';
+    appState.selectedElement.style.borderBottomLeftRadius = radiusBottomLeft + 'px';
 }
 
 console.log('FIFI Page Builder initialisé avec succès!');
